@@ -1,0 +1,43 @@
+section.gamers{
+    padding: 20px;
+    border: 1px solid #000;
+    background-color: darken(#F9B025,10%);
+    
+    .viewer{
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        // border: 1px solid red;
+        width: 80%;
+        .info{
+            width: 60%;
+            border: 1px solid green;
+            .featured-image{
+                .bevel-inner{
+                    height: 500px;
+                    background-image: url(../../img/gamers/akira_featured.jpg);
+                    background-size: cover;
+                }
+            }
+            .name{
+                margin-top: 10px;
+                padding: 10px;
+                font-size: 26px;
+                font-weight: 800;
+                letter-spacing: 2px;
+                
+            }
+            .description{
+                margin-top: 10px;
+                .bevel-inner-text{
+                    padding: 10px;
+                    line-height: 1.5;
+                }
+            }
+        }
+        .character{
+            width: 40%;
+            border: 1px solid pink;
+        }
+    }
+}
