@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,MAAM,AAAA,CACF,MAAM,CAAE,cAAc,CACzB,AEFD,AAAA,MAAM,AAAA,CACF,MAAM,CAAE,cAAc,CACzB",
+    "sources": [
+        "../sass/theme-update.scss",
+        "../sass/components/index.scss",
+        "../sass/components/_title.scss",
+        "../sass/views/index.scss",
+        "../sass/views/_footer.scss"
+    ],
+    "names": [],
+    "file": "theme-update.css"
+}
