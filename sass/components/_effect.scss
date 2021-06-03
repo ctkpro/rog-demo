@@ -1,6 +1,6 @@
 $bevel-border-width: 3px;
 $bevel-border-color: white;
-$bg-color: #F9B025;
+$bg-color: darken(#F9B025,10%);
 
 .section-title{
     display: inline-block;
@@ -165,14 +165,18 @@ $bg-color: #F9B025;
 // image box
 .box-container{
     position: relative;
+    margin-top: 20px;
     height: 500px;
+    &::before, &::after{
+        display: none;
+    }
 }
 .box{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 700px;
+    width: 660px;
     height: 500px;
     background: #111845a6;
     box-sizing: border-box;
@@ -181,7 +185,7 @@ $bg-color: #F9B025;
     border: 2px solid #2a3cad;
     color: white;
     // padding: 20px;
-    background-image: url(../../img/gamers/akira_featured.jpg);
+    background-image: url(./../img/akira_featured.jpg);
     background-size: cover;
   }
   
@@ -235,7 +239,7 @@ $bg-color: #F9B025;
   .box span:nth-child(2)
   {
     transform:rotate(90deg);
-    height: 696px;
+    height: 656px;
   }
   
   .box span:nth-child(3)
@@ -246,7 +250,7 @@ $bg-color: #F9B025;
   .box span:nth-child(4)
   {
     transform:rotate(270deg);
-    height: 696px;
+    height: 656px;
   }
   
   .box span:before
@@ -365,7 +369,6 @@ $corner-v-neg: (100% - $corner-v-pos);
         position: absolute;
         width: 25px;
         height: 25px;
-        border: 0 solid #000;
         top: -$bevel-border-width;
         right: -$bevel-border-width;
         background: linear-gradient(45deg, transparent 15px, $bevel-border-color 15px, $bevel-border-color 18px,$bg-color 0);
