@@ -4,6 +4,7 @@ $bg-color: darken(#F9B025,10%);
 
 .section-title{
     display: inline-block;
+    position: relative;
     border-bottom: 2px solid white;
     font-family: 'Teko', sans-serif;
     font-size: 50px;
@@ -11,13 +12,62 @@ $bg-color: darken(#F9B025,10%);
     color: white;
     letter-spacing: 2px;
     text-transform: uppercase;
+    text-shadow: 8px 8px 1px rgba(white,0.5);
+    &:hover{
+        &:after{
+            width: 150px;
+            transition: 1s;
+        }
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -10px;
+        width: 50px;
+        height: 10px;
+        background-color: white;
+        transform: perspective(10px) rotateX(-15deg);
+        transition: 1s;
+    }
 }
 
+// typing效果
+.typewriter{
+    // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    width: 265px;
+    color: #fff;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    font-weight: 800;
+    font-family: 'Teko', sans-serif;
+    font-size: 50px;
+    white-space: nowrap; /* Keeps the content on a single line */
+    letter-spacing: 7px; /* Adjust as needed */
+    animation: 
+      typing 6s steps(10, end),
+      blink-caret .5s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 265px }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+  }
+// typing 結束
 
+// glitch 效果
 .glitch {
     color: rgb(223, 191, 191);
     position: relative;
-    font-size: 3vw;
+    font-size: 50px;
+    font-family: 'Teko', sans-serif;
     // margin: 70px 200px;
     animation: glitch 5s 5s infinite;
   }
@@ -141,7 +191,8 @@ $bg-color: darken(#F9B025,10%);
 
 // neon效果
 .neon {
-    font-size: 40px;
+    font-size: 50px;
+    font-family: 'Teko', sans-serif;
     color: #fff;
     text-shadow:
       0 0 5px #fff,
@@ -159,6 +210,7 @@ $bg-color: darken(#F9B025,10%);
 .threeD{
     font-size: 60px;
     text-transform: uppercase;
+    color:white;
 }
 // 3D結束
 
@@ -167,6 +219,8 @@ $bg-color: darken(#F9B025,10%);
     position: relative;
     margin-top: 20px;
     height: 500px;
+
+    
     &::before, &::after{
         display: none;
     }
