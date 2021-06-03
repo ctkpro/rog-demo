@@ -14,52 +14,116 @@
 	</head>
 	<body>
 		<section class="gamers">
-			<h2 class="section-title">G.A.M.E.R.s</h2>
+			<svg>
+				<defs>
+				  <pattern id="p" patternUnits="userSpaceOnUse" width="50" height="50">
+					<rect width="50" height="50" stroke="#eee" fill="transparent" x="0" y="0"></rect>
+					<!-- <circle cx="1" cy="1" r="1" fill="#eee" /> -->
+				  </pattern>
+				</defs>
+				<rect x='0' y='0' width="100%" height="100%" stroke="" fill="url(#p)" />
+				<!-- <rect width="60" height="60" x="1" y="1" stroke="#00f" stroke-width="2" fill="url(#p)" /> -->
+			</svg>
+			<div class="section-title">
+				<h2 class="line-1 anim-typewriter typewriter">G.A.M.E.R.s</h2>
+			</div>
 
-			<div class="glitch" data-text="G.A.M.E.R.s">G.A.M.E.R.s</div>
+			<!-- <div class="glitch" data-text="G.A.M.E.R.s">G.A.M.E.R.s</div> -->
+			<!-- <div class="glow">G.A.M.E.R.s</div> -->
 
-			<div class="line-1 anim-typewriter typewriter">G.A.M.E.R.s</div>
+			<!-- <div class="line-1 anim-typewriter typewriter">G.A.M.E.R.s</div> -->
   			
-			<div class="glow">G.A.M.E.R.s</div>
 
-			<h1 class="neon">G.A.M.E.R.s</h1>  
+			<!-- <h1 class="neon">G.A.M.E.R.s</h1>   -->
 
-			<h1 class="threeD">G.A.M.E.R.s(hover)</h1>
+			<!-- <h1 class="threeD">G.A.M.E.R.s(hover)</h1> -->
 
 			<div class="viewer">
-				<div class="info">
-					<div class="featured-image bevel-outer">
-						<div class="bevel-inner"></div>
-					</div>
-
-					<div class="featured-image bevel-outer box-container">
-						<div class=" box">
-							<span></span><span></span><span></span><span></span>
+				<div class="slides">
+					<div class="info">
+						<div class="featured-image bevel-outer">
+							<div class="bevel-inner"></div>
 						</div>
 
+						<div class="name text-bevel">AKIRA</div>
+
+						<div class="description bevel-outer-text">
+							<div class="bevel-inner-text">From a prestigious, political samurai family in Japan, Miyamoto Akira received exceptional training in bushido and taijutsu. Influenced by traditional culture, AKIRA remained a humble man of solemn integrity who exercised restraint in all things, just like his ancestors...</div>
+						</div>
 					</div>
+					<div class="character"></div>
+				</div>
 
+				<div class="slides">
+					<div class="info">
+						<div class="featured-image bevel-outer box-container">
+							<div class=" box">
+								<span></span><span></span><span></span><span></span>
+							</div>
+						</div>
+	
+						<div class="name text-bevel">TEST</div>
 
-					<div class="name text-bevel">AKIRA</div>
-
-					
-
-
-					<div class="description bevel-outer-text">
-						<div class="bevel-inner-text">From a prestigious, political samurai family in Japan, Miyamoto Akira received exceptional training in bushido and taijutsu. Influenced by traditional culture, AKIRA remained a humble man of solemn integrity who exercised restraint in all things, just like his ancestors...</div>
+						<div class="description bevel-outer-text">
+							<div class="bevel-inner-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, at. just like his ancestors...</div>
+						</div>
 					</div>
+					<div class="character"></div>
 				</div>
-				<div class="character"></div>
-				<div class="arrows">
-					<a href="" class="arrow"></a>
-					<a href="" class="arrow"></a>
-				</div>
+
+
+
+				<!-- <div class="arrows"> -->
+					<a class="prev" onclick="plusSlides(-1)"></a>
+		  			<a class="next" onclick="plusSlides(1)"></a>
+				<!-- </div> -->
 				<div class="dots">
-					<div class="dot"></div>
-					<div class="dot"></div>
-					<div class="dot"></div>
+					<div class="dot role-akira" onclick="currentSlide(1)"></div>
+					<div class="dot" onclick="currentSlide(2)"></div>
+					<div class="dot" onclick="currentSlide(3)"></div>
+					<div class="dot" onclick="currentSlide(4)"></div>
+					<div class="dot" onclick="currentSlide(5)"></div>
+					<div class="dot" onclick="currentSlide(6)"></div>
 				</div>
 			</div>
 		</section>
+		  
+		  
+
+		  
+		  
+		  
+		  <script>
+		  var slideIndex = 1;
+		  showSlides(slideIndex);
+		  
+		  function plusSlides(n) {
+			showSlides(slideIndex += n);
+		  }
+		  
+		  function currentSlide(n) {
+			showSlides(slideIndex = n);
+		  }
+		  
+		  function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("slides");
+			var dots = document.getElementsByClassName("dot");
+			if (n > slides.length) {slideIndex = 1}    
+			if (n < 1) {slideIndex = slides.length}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";  
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+  			}
+			
+			slides[slideIndex-1].style.display = "flex";
+			dots[slideIndex-1].className += " active";
+		  }
+		  </script>
+
+
+		
 	</body>
 </html>
