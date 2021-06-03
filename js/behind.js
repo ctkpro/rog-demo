@@ -8,7 +8,7 @@ var arrayElements;
 var glitchArray = [];
 
 function initAllGlitch(){
-	arrayElements = document.querySelectorAll(".glitch");
+	arrayElements = document.querySelectorAll(".random");
 	for(let i=0; i<arrayElements.length; i++){
 		let selector = arrayElements[i];
 		let randLetterNumber = 2 + Math.floor(Math.random() * 2);

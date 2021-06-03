@@ -1,6 +1,6 @@
 .behind {
     .main{
-        background-image: url(../img/behind-bg.png);
+        background-image: url(../img/behind/bg.png);
         height: 1000px;
     }
     h2 {
@@ -48,11 +48,148 @@
         animation: noise 240ms infinite;
         background-image: url(http://api.thumbr.it/whitenoise-300x300.png?background=0a2406ff&noise=142238&density=85&opacity=100);
     }
-    .glitch {
-        color: #fff;
-        font-size: 30px;
-        letter-spacing: 1px;
+    .random {
+        color: rgba(255, 255, 255, 0.2);
+        letter-spacing: 3px;
+        font-weight: 500;
+        position: absolute;
+        line-height: 1rem;
     }
+    .random1 {
+        top: 300px;
+        right: 100px;
+        font-size: 40px;
+    }
+    .random2 {
+        top: 240px;
+        right: 500px;
+        font-size: 20px;
+    }
+    .random3 {
+        top: 800px;
+        font-size: 26px;
+    }
+    .random4 {
+        top: 880px;
+        right: 360px;
+        font-size: 18px;
+    }
+    .random5 {
+        width: 240px;
+        font-size: 6px;
+        font-weight: 100;
+        top: 560px;
+        left: 80px;
+    }
+    .random6 {
+        width: 280px;
+        font-size: 6px;
+        font-weight: 100;
+        top: 830px;
+        right: -160px;
+    }
+    .square {
+        position: absolute;
+    }
+    .square1 {
+        top: 420px;
+    }
+    .square2 {
+        top: 800px;
+        right: 30px;
+    }
+    .shaft1 {
+        -webkit-animation-delay: 0.05s;
+        -moz-animation-delay: 0.05s;
+        -o-animation-delay: 0.05s;
+        animation-delay: 0.05s;
+    }
+    .shaft2 {
+    -webkit-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    -o-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+    }
+    .shaft3 {
+    -webkit-animation-delay: 0.15s;
+    -moz-animation-delay: 0.15s;
+    -o-animation-delay: 0.15s;
+    animation-delay: 0.15s;
+    }
+    .shaft4 {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+    }
+    .shaft5 {
+    -webkit-animation-delay: 0.25s;
+    -moz-animation-delay: 0.25s;
+    -o-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+    }
+
+    .square > div {
+        background-color: #FE2260;
+        float: left;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 0;
+        -webkit-animation: loading 2s infinite ease-in-out;
+        -moz-animation: loading 2s infinite ease-in-out;
+        -o-animation: loading 2s infinite ease-in-out;
+        animation: loading 2s infinite ease-in-out;
+    }
+    .square2 > div {
+        -webkit-animation: loading 3s infinite ease-in-out;
+        -moz-animation: loading 3s infinite ease-in-out;
+        -o-animation: loading 3s infinite ease-in-out;
+        animation: loading 3s infinite ease-in-out;
+    }
+    
+    @-webkit-keyframes loading {
+        80% {
+            margin-right: 5px;
+            -webkit-transform: translateXunquote("(" -10px ")");
+            -moz-transform: translateXunquote("(" -10px ")");
+            -ms-transform: translateXunquote("(" -10px ")");
+            -o-transform: translateXunquote("(" -10px ")");
+            transform: translateXunquote("(" -10px ")");
+        }
+    }
+    @-moz-keyframes loading {
+        80% {
+            margin-right: 5px;
+            -webkit-transform: translateXunquote("(" -10px ")");
+            -moz-transform: translateXunquote("(" -10px ")");
+            -ms-transform: translateXunquote("(" -10px ")");
+            -o-transform: translateXunquote("(" -10px ")");
+            transform: translateXunquote("(" -10px ")");
+        }
+    }
+    @-o-keyframes loading {
+        80% {
+            margin-right: 5px;
+            -webkit-transform: translateXunquote("(" -10px ")");
+            -moz-transform: translateXunquote("(" -10px ")");
+            -ms-transform: translateXunquote("(" -10px ")");
+            -o-transform: translateXunquote("(" -10px ")");
+            transform: translateXunquote("(" -10px ")");
+        }
+    }
+    @keyframes loading {
+        80% {
+            margin-right: 5px;
+            -webkit-transform: translateXunquote("(" -10px ")");
+            -moz-transform: translateXunquote("(" -10px ")");
+            -ms-transform: translateXunquote("(" -10px ")");
+            -o-transform: translateXunquote("(" -10px ")");
+            transform: translateXunquote("(" -10px ")");
+        }
+    }
+
+
     @keyframes noise {
         0% {
         background-image: url(http://api.thumbr.it/whitenoise-200x200.png?background=0a2406ff&noise=142238&density=85&opacity=100);

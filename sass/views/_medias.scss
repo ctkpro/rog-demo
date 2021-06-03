@@ -1,0 +1,147 @@
+.medias {
+    .main{
+        background-image: none;
+        height: 1300px;
+        background-color: #0A0C17;
+    }
+    .overbg {
+        background: url(../img/medias/overbg.png);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        background-repeat: no-repeat;
+    }
+    .content{
+        background: url(../img/medias/content.png);
+        background-size: contain;
+        display: flex;
+        justify-content: center;
+        width: 1245px;
+    }
+}
+.btn {
+    -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin: 0 10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    width: 140px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: bottom;
+    border: 2px solid;
+    clip-path: polygon( 0% 0%, calc(100% - 18px) 0, 100% 18px, 100% 100%, 95% 100%, calc(0% + 18px) 100%, 0% calc(100% - 18px));
+  }
+  
+  .btn-light {
+    background-color: transparent;
+    border-color: #43FFFE;
+    color: #43FFFE;
+  }
+.btn-light::before, .btn-light::after {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    content: "";
+    display: block;
+    top: 0px;
+}
+.btn-light::before {
+    
+    right: -23px;
+    background: linear-gradient(45deg, transparent 28px, #3ffeff 0px, #3ffeff 30px, transparent 0);
+    
+}
+.btn-light::after {
+    right: 124px;
+    background: linear-gradient(
+225deg
+, transparent 28px, #3ffeff 0px, #3ffeff 30px, transparent 0);
+}
+  .btn-light:hover {
+    color: #121212;
+    background-color: #43FFFE;
+  }
+  
+  .btn-dark {
+    background: linear-gradient(225deg, transparent 10%, #43fffe 10%);
+    color: #000;
+  }
+  
+  .btn-glitch {
+    transform: translateZ(0);
+    overflow: visible;
+  }
+  .btn-glitch.btn-glitch-active {
+    -webkit-filter: url("#filter");
+    filter: url("#filter");
+  }
+  .btn-glitch.btn-glitch-active::after, .btn-glitch.btn-glitch-active::before {
+    content: "";
+    width: 1px;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+  }
+  .btn-glitch.btn-glitch-active::after {
+    left: -2px;
+    background-color: #ff536b;
+    animation: colorshift-red 2.6s infinite;
+    animation-timing-function: step-end;
+  }
+  .btn-glitch.btn-glitch-active::before {
+    right: -2px;
+    background-color: #3ffeff;
+    animation: colorshift-blue 2.6s infinite;
+    animation-timing-function: step-end;
+  }
+  
+  .body-section .dark {
+    background-color: #121212;
+  }
+  
+  
+  @keyframes colorshift-red {
+    0%, 7% {
+      background-color: #ff536b;
+    }
+    8%, 18% {
+      background-color: transparent;
+    }
+    19% {
+      background-color: #ff536b;
+      width: 2px;
+    }
+    23%, 100% {
+      background-color: transparent;
+    }
+  }
+  @keyframes colorshift-blue {
+    0%, 7% {
+      background-color: #3ffeff;
+    }
+    8%, 18% {
+      background-color: transparent;
+    }
+    19% {
+      background-color: #3ffeff;
+      width: 2px;
+    }
+    23%, 100% {
+      background-color: transparent;
+    }
+  }
