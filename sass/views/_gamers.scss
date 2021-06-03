@@ -22,6 +22,16 @@ section.gamers{
             display: flex;
             justify-content: space-around;
             position: relative;
+            &.akira{
+                .bevel-inner{
+                    background-image: url(./../img/akira_featured.jpg);
+                }
+            }
+            &.seven{
+                .bevel-inner2{
+                    background-image: url(./../img/seven_featured.jpg);
+                }
+            }
         }
         .info{
             width: 60%;
@@ -29,7 +39,6 @@ section.gamers{
             .featured-image{
                 .bevel-inner{
                     height: 370px;
-                    background-image: url(./../img/akira_featured.jpg);
                     background-size: contain;
                     cursor: url("./../img/target1.png"), pointer;
                 }
