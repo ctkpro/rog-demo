@@ -7,7 +7,7 @@ section.gamers{
         margin-left: -50px;
         margin-top: -200px;
         width: 110%;
-        height: 2000px;
+        height: 1500px;
         z-index: -1;
         rect{
             stroke: rgba(white, 0.3);
@@ -61,7 +61,6 @@ section.gamers{
         }
         .character{
             width: 40%;
-            border: 1px solid pink;
             background-image: url(./../img/AKIRA.png);
             background-size: 90%;
             background-repeat: no-repeat;
