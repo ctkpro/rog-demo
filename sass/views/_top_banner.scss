@@ -49,12 +49,10 @@ nav{
             width: 100%;
             font-size: 14px;
             .number{
-                // border-right: 1px solid white;
-                width: 1px;
+                width: 4px;
                 height: 5px;
-                // padding-right: 10px;
-                // padding-left: 10px;
-                border: 1px solid white;
+                // border: 1px solid white;
+                background-color: white;
                 text-align: center;
                 color: transparent;
             }
@@ -117,36 +115,60 @@ nav{
         height: 100vh;
         object-fit: cover;
     }
-    .title-container{
+    .center-container{
         position: absolute;
         top: 49%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -0%);
+        opacity: 0;
+        animation-name: fade-in;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        animation-delay: 3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        h1{
+            font-family: $font;
+            font-size: 80px;
+            color: white;
+        }
+        .describe{
+            color: white;
+            line-height: 1.8;
+        }
     }
-    h1{
-        font-family: $font;
-        font-size: 80px;
-        color: white;
+    .noise1, .noise2, .noise3{
+        position: absolute;
     }
-    // .noise{
-    //     position: absolute;
-    //     background-color: white;
-    //     opacity: 0.5;
-    // }
-    // @for $i from 1 through 20 {
-    //     .noise:nth-child(#{$i}) { 
-    //       top: random(99) + vh;
-    //       left: random(100)  + vw;
-    //       width: random(30) + px;
-    //       height: random(30) + px;
-    //     }
-    // }
+    .noise1{
+        top: 10%;
+        left: 5%;
+    }
+    .noise2{
+        top: 70%;
+        left: 10%;
+    }
+    .noise3{
+        top: 40%;
+        right: 5%;
+    }
+    
 }
 @keyframes breathing {
     from {background-color: rgba($brand,0.2);}
     to {background-color: $brand;}
 }
 
+@keyframes fade-in {
+    from{
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to{
+        opacity: 1;
+        transform: translate(-50%, -49%);
+    }
+}
 
 .glitch {
 	animation: glitch-skew 1s infinite linear alternate-reverse;

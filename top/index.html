@@ -34,11 +34,68 @@
 			</div>
 		</nav>
 		<section class="top_banner">
-			
 			<img src="../img/top_banner/banner.jpg" alt="" class="banner">
-			<div class="title-container">
+			<div class="center-container">
 				<h1 class="title glitch" data-text="REPUBLIC OF GAMERS">REPUBLIC OF GAMERS</h1>
+				<p class="describe">“Dare to be different!”is the core value in the booming years of e-sports.
+					Genders, skin colors, races, or languages no longer separate us from connecting with each other.
+					Even misunderstood by the mainstream in society, we hold fast to our will.
+					The diversified style of being Vanguard, Fusion, and Rebel is our statement for rejecting doctrinism.
+					By the border between the reality and the virtuality,
+					We gamers prove our self-existence in our own way.</p>
 			</div>
+			<canvas id='c1' width=200 height=150 class="noise1"></canvas>
+			<canvas id='c2' width=200 height=150 class="noise2"></canvas>
+			<canvas id='c3' width=200 height=150 class="noise3"></canvas>
 		</section>
+
+
+		<script>
+			var c1 = document.getElementById("c1");
+			var c2 = document.getElementById("c2");
+			var c3 = document.getElementById("c3");
+			var ctx1 = c1.getContext("2d");
+			var ctx2 = c2.getContext("2d");
+			var ctx3 = c3.getContext("2d");
+			ctx1.fillStyle = "white";
+			ctx2.fillStyle = "white";
+			ctx3.fillStyle = "white";
+			function noise1(){
+				for (let i = 0; i < 5; i++) {
+					let x = Math.random() * i * 30;
+					let y = Math.random() * i * 30;
+					ctx1.fillRect(x, y, i*3,5);
+				}
+			}
+			function noise2(){
+				for (let i = 0; i < 10; i++) {
+					let x = Math.random() * i * 30;
+					let y = Math.random() * i * 30;
+					ctx2.fillRect(x, y, i*3,5);
+				}
+			}
+			function noise3(){
+				for (let i = 0; i < 10; i++) {
+					let x = Math.random() * i * 30;
+					let y = Math.random() * i * 30;
+					ctx3.fillRect(x, y, i*3,5);
+				}
+			}
+			setInterval(() => {
+				noise1();
+				noise3();
+			}, 500);
+			setInterval(() => {
+				noise2();
+			}, 600);
+			
+			setInterval(() => {
+				ctx1.clearRect(0, 0, 500, 320);
+			}, 3000);
+			setInterval(() => {
+				ctx2.clearRect(0, 0, 500, 320);
+				ctx3.clearRect(0, 0, 500, 320);
+			}, 2000);
+		</script>
 	</body>
 </html>
