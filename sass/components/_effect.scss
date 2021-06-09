@@ -248,6 +248,7 @@ $bg-color: darken(#F9B025,10%);
     border: none;
     color: white;
     background-size: cover;
+    background-image: url(../img/worldview/slider_seven.jpg);
   }
   
   .box:before{
@@ -352,148 +353,93 @@ $bg-color: darken(#F9B025,10%);
 }
 // image box 結束
 
-// 漸層邊匡
 
-   
-
-
-
-$corner-h-pos: 6%;
-$corner-h-neg: (100% - $corner-h-pos);
-$corner-v-pos: 12%;
-$corner-v-neg: (100% - $corner-v-pos);
-
-
-
-// .bevel-outer{
-//     padding: 3px;
-//     padding-bottom: 2px;
-//     clip-path: polygon(0% 0%, $corner-h-neg 0%, 100% $corner-v-pos, 100% 100%, $corner-h-neg 100%, $corner-h-pos 100%, 0% $corner-v-neg, 0% $corner-v-pos);
-//     background-color: $bevel-border-color;
-//     .bevel-inner{
-//         background-size: contain;
-//         background-repeat: no-repeat;
-//         clip-path: polygon($corner-h-pos 0%, $corner-h-neg 0%, 100% $corner-v-pos, 100% $corner-v-neg, $corner-h-neg 100%, $corner-h-pos 100%, 0% $corner-v-neg, 0% $corner-v-pos);
-//     }
-// }
-.bevel-outer{
-    position: relative;
-    border: $bevel-border-width solid $bevel-border-color;
-    &::before,&::after{
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        z-index: 1;
-    }
-    &:before{
-        top: -3px;
-        left: -3px;
-        background: linear-gradient(-45deg, transparent 26px, $bevel-border-color 26px, $bevel-border-color 0);
-    }
-    &:after{
-        bottom: -3px;
-        right: -3px;
-        background: linear-gradient(-45deg, $bevel-border-color 26px, transparent 26px, transparent 0);
-    }
-    .bevel-inner{
-        position: relative;
-        background-size: contain;
-        background-repeat: no-repeat;
-        &:before,&:after{
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-        }
-        &:before{
-            bottom: -3px;
-            left: -3px;
-            background: linear-gradient(45deg, $bg-color 26px, $bevel-border-color 26px, $bevel-border-color 29px,transparent 29px, transparent 0);
-        }
-        &:after{
-            top: -3px;
-            right: -3px;
-            background: linear-gradient(45deg, transparent 26px, $bevel-border-color 26px, $bevel-border-color 29px,$bg-color 29px, $bg-color 0);
-        }
-    }
+$bevel-l-size:40px;
+.bevel-l{
+  padding: 4px;
+  background-color: #fff;
+  clip-path: polygon($bevel-l-size 0,calc(100% - #{$bevel-l-size}) 0,100% #{$bevel-l-size}, 100% 100%, $bevel-l-size 100%, 0 calc(100% - #{$bevel-l-size}),0 0);
+  
+  .bevel-l-img{
+    clip-path: polygon($bevel-l-size 0,calc(100% - #{$bevel-l-size}) 0,100% #{$bevel-l-size}, 100% calc(100% - #{$bevel-l-size}), calc(100% - #{$bevel-l-size}) 100%, $bevel-l-size 100%, 0 calc(100% - #{$bevel-l-size}),0 $bevel-l-size);
+  }
 }
 
-
-
-
-.text-bevel{
-    position: relative;
-    border: $bevel-border-width solid $bevel-border-color;
-    &:before{
-        content: '';
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        top: -$bevel-border-width;
-        right: -$bevel-border-width;
-        background: linear-gradient(45deg, transparent 15px, $bevel-border-color 15px, $bevel-border-color 18px,$bg-color 0);
-    }
+$bevel-s-size:20px;
+.bevel-s-tr{
+  border: 2px solid white;
+  background: linear-gradient(-135deg,white 14px,transparent 0) top right;
+  background-repeat: no-repeat;
+  clip-path: polygon(0 0,calc(100% - #{$bevel-s-size}) 0,100% #{$bevel-s-size},100% 100%, 0 100%,0 0);
 }
 
+.bevel-s{
+  border: 2px solid white;
+  background: 
+    linear-gradient(135deg,white 14px,transparent 0) top left,
+    linear-gradient(-135deg,white 14px,transparent 0) top right,
+    linear-gradient(45deg,white 14px,transparent 0) bottom left;
+  background-repeat: no-repeat;
+  clip-path: polygon($bevel-s-size 0,calc(100% - #{$bevel-s-size}) 0,100% #{$bevel-s-size}, 100% 100%, $bevel-s-size 100%, 0 calc(100% - #{$bevel-s-size}),0 0);
+}
 
-// $t-corner-h-pos: 3%;
-// $t-corner-h-neg: (100% - $t-corner-h-pos);
-// $t-corner-v-pos: 35%;
-// $t-corner-v-neg: (100% - $t-corner-v-pos);
+$bevel-xs-size:15px;
+.bevel-xs{
+  border: 2px solid white;
+  background: 
+    linear-gradient(-135deg,white 10px,transparent 0) top right,
+    linear-gradient(45deg,white 10px,transparent 0) bottom left;
+  background-repeat: no-repeat;
+  clip-path: polygon($bevel-xs-size 0,calc(100% - #{$bevel-xs-size}) 0,100% #{$bevel-xs-size}, 100% 100%, $bevel-xs-size 100%, 0 calc(100% - #{$bevel-xs-size}),0 0);
+}
 
-// .bevel-outer-text{
-//     padding: 3px;
-//     padding-bottom: 2px;
-//     clip-path: polygon(0% 0%, $t-corner-h-neg 0%, 100% $t-corner-v-pos, 100% 100%, $t-corner-h-neg 100%, $t-corner-h-pos 100%, 0% $t-corner-v-neg, 0% $t-corner-v-pos);
-//     background-color: $bevel-border-color;
-//     .bevel-inner-text{
-//         background-color: $bg-color;
-//         background-size: contain;
-//         background-repeat: no-repeat;
-//         clip-path: polygon($t-corner-h-pos 0%, $t-corner-h-neg 0%, 100% $t-corner-v-pos, 100% $t-corner-v-neg, $t-corner-h-neg 100%, $t-corner-h-pos 100%, 0% $t-corner-v-neg, 0% $t-corner-v-pos);
-//     }
-// }
-
-.bevel-outer-text{
-    position: relative;
-    border: $bevel-border-width solid $bevel-border-color;
-    &::before,&::after{
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        z-index: 1;
-    }
+.glass{
+  position: relative;
+  &:before{
+    content: '';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background: rgba(255,255,255,0.1);
+    transition:0.5s;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  &:hover{
     &:before{
-        top: -3px;
-        left: -3px;
-        background: linear-gradient(-45deg, transparent 13px, $bevel-border-color 13px, $bevel-border-color 0);
+      left:-50%;
+      transform: skewX(-5deg);
     }
-    &:after{
-        bottom: -3px;
-        right: -3px;
-        background: linear-gradient(-45deg, $bevel-border-color 13px, $bevel-border-color 13px, $bevel-border-color 16px, transparent 16px, transparent 0);
-    }
-    .bevel-inner-text{
-        position: relative;
-        background-size: contain;
-        background-repeat: no-repeat;
-        &:before,&:after{
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-        }
-        &:before{
-            bottom: -3px;
-            left: -3px;
-            background: linear-gradient(45deg, $bg-color 13px, $bevel-border-color 13px, $bevel-border-color 16px,transparent 16px, transparent 0);
-        }
-        &:after{
-            top: -3px;
-            right: -3px;
-            background: linear-gradient(45deg, transparent 13px, $bevel-border-color 13px, $bevel-border-color 16px,$bg-color 16px, $bg-color 0);
-        }
-    }
+  }
+}
+
+.shine{
+  &:before,&:after{
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+  &:before {
+    width: 60px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    filter: blur(30px);
+    transform: translateX(-100px) skewX(-15deg);
+  }
+  &:after {
+    width: 30px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    filter: blur(5px);
+    transform: translateX(-100px) skewX(-15deg);
+  }
+  &:hover {
+      &:before,&:after {
+        transform: translateX(300px) skewX(-15deg);
+        transition: 0.7s;
+      }
+  }
 }

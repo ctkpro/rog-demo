@@ -145,16 +145,18 @@ section.worldview{
         letter-spacing: 1px;
         line-height: 1.8;
         overflow-y: scroll;
+
         background-color: rgba(white, 0.2);
     }
-
+    .slider-container{
+        width: 100%;
+        overflow: hidden;
+    }
     .slider{
         display: flex;
         margin-top: 250px;
         width: 200%;
         height: 400px;
-        overflow: hidden;
-
         animation-name: playslider;
         animation-duration: 40s;
         animation-timing-function: linear;
@@ -189,14 +191,14 @@ section.worldview{
         white-space: nowrap; /* Keeps the content on a single line */
         letter-spacing: 6px; /* Adjust as needed */
         animation: 
-            typing 4s steps(22, end),
+            typing2 4s steps(22, end),
             blink-caret .5s step-end infinite,
         }
   
     /* The typing effect */
 }
 
-@keyframes typing {
+@keyframes typing2 {
     from { width: 0; }
     to { width: 700px; }
 }
