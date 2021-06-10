@@ -115,6 +115,12 @@ body>nav{
         height: 100vh;
         object-fit: cover;
     }
+    video{
+      margin-bottom: -40px;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
     .center-container{
         position: absolute;
         top: 49%;
@@ -124,7 +130,7 @@ body>nav{
         animation-name: fade-in;
         animation-duration: 1s;
         animation-timing-function: ease-out;
-        animation-delay: 3s;
+        animation-delay: 6.5s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         h1{
