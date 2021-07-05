@@ -1,0 +1,326 @@
+$black: #010510;
+$dark-blue: #061A29;
+// $red: #712D2E;
+$blue: #58C2D4;
+$red: #B13638;
+
+$alert1: 'system error';
+$alert2: 'virus detected';
+
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+body.opening{
+    margin: 0;
+    height: calc(100vh - 2px);
+    border: 1px solid red;
+    background-color: $black;
+    overflow: hidden;
+
+
+    svg{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        rect{
+            stroke: $dark-blue;
+        }
+    }
+    nav{
+        // border: 1px solid red;
+        ul{
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 8px 10px;
+            >li{
+                margin-right: 5px;
+                padding: 5px 10px;
+                // width: 100%;
+                min-width: 9%;
+                border: 1px solid $brand;
+                color: $brand;
+                &:nth-child(1){
+                    // width: 300px;
+                }
+                &:nth-child(2){
+                    // width: 600px;
+                }
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    video{
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        opacity: 0;
+    }
+}
+
+
+.system-box{
+	position: absolute;
+	padding: 10px;
+	border: 1px solid $red;
+	border-radius: 3px;
+    background-color: rgba(black,.8);
+	header{
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		padding: 5px;
+		padding-right: 0;
+		width: auto;
+		background-color: rgba($blue,0.3);
+		font-size: 20px;
+		font-weight: 400;
+		color: #58C2D4;
+		.title{
+			display: flex;
+			align-items: center;
+			padding-left: 10px;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			&:before, &:after{
+				content: '';
+				position: absolute;
+				left: -1px;
+				width: 5px;
+				height: 5px;
+				border-left: 1px solid $red;
+			}
+			&:before{
+				top: -1px;
+				border-top: 1px solid $red;
+			}
+			&:after{
+				bottom: -1px;
+				border-bottom: 1px solid $red;
+			}
+		}
+		.close{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50px;
+			height: 40px;
+			border-left: 1px solid $red;
+			// background-color: pink;
+			&:before, &:after{
+				content: '';
+				position: absolute;
+				right: -1px;
+				width: 5px;
+				height: 5px;
+				border-right: 1px solid $red;
+			}
+			&:before{
+				top: -1px;
+				border-top: 1px solid $red;
+			}
+			&:after{
+				bottom: -1px;
+				border-bottom: 1px solid $red;
+			}
+		}
+	}
+	section{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+        flex-wrap: wrap;
+		margin-top: 10px;
+		color: $red;
+		font-size: 40px;
+		font-weight: 800;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		// background-color: #fff;
+
+        // animation: breathing-text 1s ease-in-out 0s infinite alternate none;
+	}
+	footer{
+        margin-top: 10px;
+        background-color: rgba(white,0.2);
+		color: rgba($blue,0.5);
+		p{
+			margin: 5px;
+			// border: 1px solid white;
+			// background-color: pink;
+		}
+	}
+}
+.box-size-s{
+    width: 260px;
+    header{
+        padding: 2px;
+        font-size: 14px;
+        .title{
+            letter-spacing: 2px;
+        }
+        .close{
+            width: 35px;
+            height: 30px;
+        }
+    }
+}
+.box-size-m{
+    width: 500px;
+    section{
+		height: 120px;
+		min-height: 120px;
+    }
+}
+.warning-box{
+    // display: none;
+    top: 10%;
+	right: 5%;
+    // animation: show-up 1s ease-in-out 0s infinite alternate none;
+    opacity: 0;
+    animation-name: show-up;
+    animation-delay: 2s;
+    animation-duration: .6s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: step-start;
+    animation-fill-mode: forwards;
+    section{
+        animation-name: breathing-text;
+        animation-delay: 0s;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: none;
+    }
+}
+.download-box{
+    --progress: 0%;
+    top: 50%;
+    left: 35%;
+    opacity: 0;
+    .progressbar{
+        padding: 1px;
+        width: 100%;
+        border: 1px solid $brand;
+        .progressbar-inner{
+            width: var(--progress);
+            height: 20px;
+            background-color: $brand;
+        }
+    }
+    footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        .process{
+            // padding: 10px;
+            .process-status{
+                margin-left: 10px;
+                text-transform: uppercase;
+            }
+        }
+        .cancel{
+            padding: 10px 15px;
+            border: 1px solid $brand;
+            color: $brand;
+            text-transform: uppercase;
+        }
+    }
+}
+.pwd-box{
+    top: 15%;
+    left: 8%;
+    opacity: 0;
+    animation-name: show-up;
+    animation-delay: 3.5s;
+    animation-duration: .4s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: step-start;
+    animation-fill-mode: forwards;
+
+    ul{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 10px;
+        width: 100%;
+        padding: 0;
+        >li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            font-weight: 300;
+            font-family: $font;
+            color: #ccc;
+            cursor: pointer;
+        }
+    }
+    a{
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $brand;
+        border-radius: 3px;
+        color: #ccc;
+        text-align: center;
+        transition: .3s;
+        &.active{
+            background-color: $brand;
+            transform: scale(1.1);                
+            transition: .3s;
+        }
+    }
+    .enter{
+        width: 100%;
+        height: 50px;
+        font-weight: 300;
+        font-family: $font;
+        color: #ccc;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        a{
+            &:active{
+                transform: scale(1.05);
+            }
+            
+        }
+    }
+    footer{
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+
+
+.indent-1{
+	text-indent: 10px;
+}
+
+
+@keyframes breathing-text {
+    from {color: rgba($brand,0.2);}
+    to {color: $brand;}
+}
+
+@keyframes show-up {
+    40%{ opacity: 1;}
+    60%{ opacity: 0;}
+    78%{ opacity: 1;}
+    93%{ opacity: 0;}
+    100%{ opacity: 1;}
+}

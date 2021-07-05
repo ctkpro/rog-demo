@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Opening</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="css/theme-update.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js'></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	</head>
+	<body class="opening">
+		<nav>
+			<ul>
+				<li>system1</li>
+				<li>system2 Lorem ipsum dolor sit amet</li>
+				<li>system3 Lorem ipsum</li>
+				<li>system4</li>
+				<li>system5 Lorem ipsum dolor</li>
+				<li>system6 Lorem</li>
+				<li>system7</li>
+			</ul>
+		</nav>
+		<section class="">
+			<!-- <img src="../img/top_banner/banner.jpg" alt="" class="banner"> -->
+
+			<!-- <video  autoplay muted poster="https://static.playoverwatch.com/img/pages/hero-detail/staticposter-733c75265d.gif">
+				<source src="../video/rog_short.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video> -->
+
+			<svg>
+				<defs>
+					<pattern id="p" patternUnits="userSpaceOnUse" width="50" height="50">
+						<rect width="50" height="50" stroke="#eee" fill="transparent" x="0" y="0"></rect>
+					</pattern>
+				</defs>
+					<rect x='0' y='0' width="100%" height="100%" stroke="" fill="url(#p)" />
+			</svg>
+			<div class="warning-box system-box box-size-m">
+				<header>
+					<div class="title">warning</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					system error
+				</section>
+				<footer>
+					<p>Class Rog extend React.class{</p>
+					<p class='indent-1'>this.state = virus;
+					</p>
+					<p>}</p>
+				</footer>
+			</div>
+			<div class="pwd-box system-box box-size-s">
+				<header>
+					<div class="title">enter access code</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					<ul>
+						<li class="number"><a href="">1</a></li>
+						<li class="number"><a href="">2</a></li>
+						<li class="number"><a href="">3</a></li>
+						<li class="number"><a href="">4</a></li>
+						<li class="number"><a href="">5</a></li>
+						<li class="number"><a href="">6</a></li>
+						<li class="number"><a href="">7</a></li>
+						<li class="number"><a href="">8</a></li>
+						<li class="number"><a href="">9</a></li>
+						<li class="number"><a href="">0</a></li>
+					</ul>
+					<div class="enter"><a href="">enter</a></div>
+				</section>
+				<footer>
+					<p>password</p>
+				</footer>
+			</div>
+			<div class="download-box system-box box-size-m">
+				<header>
+					<div class="title">data download</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					<div class="progressbar">
+						<div class="progressbar-inner"></div>
+					</div>
+				</section>
+				<footer>
+					<div class="process">
+						<span class="process-rate">1%</span>
+						<span class="process-status">proccessed...</span>
+					</div>
+					<div class="cancel">cancel</div>
+				</footer>
+			</div>
+			<video muted poster="https://static.playoverwatch.com/img/pages/hero-detail/staticposter-733c75265d.gif">
+				<source src="../video/rog_short.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+
+		</section>
+
+		<script>
+			let nbs = document.querySelectorAll('.number a');
+			let enter = document.querySelector('.enter a');
+			let encode_pwd = document.querySelector('.pwd-box footer p');
+			let warning_box = document.querySelector('.warning-box');
+			let pwd_box = document.querySelector('.pwd-box');	
+			let download_box = document.querySelector('.download-box');	
+			let video = document.querySelector('video');		
+			function clickEffect(ele,t){
+				setTimeout(() => {
+					ele.classList.add('active');
+				}, t);
+				setTimeout(() => {
+					ele.classList.remove('active');
+				}, t+150);
+			}
+			function encodeEffect(ele,code,t){
+				setTimeout(() => {
+					ele.innerText = code;
+				}, t);
+			}
+			function do_password(pwd){
+				let delay = 250;
+				let input_text = '';
+				for (let i = 0; i < pwd.length; i++) {
+					let ele = pwd[i] == 0 ? nbs[9] : nbs[ pwd[i]-1 ];
+					clickEffect( ele, i*delay );
+
+					input_text += '*';
+					encodeEffect(encode_pwd, input_text, i*delay);
+				}
+				clickEffect( enter,pwd.length*delay);
+				encodeEffect( encode_pwd, 'access granted', pwd.length*delay+500);
+			}
+
+			function progress() {
+				let bar = document.querySelector('.progressbar-inner');
+				let process = document.querySelector('.process-rate');
+				let status = document.querySelector('.process-status');
+				var rate = 1;
+				var frameId = setInterval(frame, 20);
+				function frame() {
+					if (rate >= 100) {
+						clearInterval(frameId);
+						status.innerText = 'finished';
+					}else{
+						rate++;
+						bar.style.width = rate + '%';
+						process.innerText = rate + '%';
+					}
+				}
+			}
+
+			setTimeout(() => { do_password('27072080');}, 4200);
+
+			setTimeout(() => { download_box.style.opacity = 1;}, 7200);
+
+			setTimeout(() => { progress();}, 7500);
+
+			setTimeout(() => {
+				warning_box.style.display = 'none';
+				pwd_box.style.display = 'none';
+				download_box.style.display = 'none';
+			}, 10500);
+
+			setTimeout(() => {
+				video.style.opacity = 1;
+				video.play();
+			}, 11000);
+		</script>
+	</body>
+</html>

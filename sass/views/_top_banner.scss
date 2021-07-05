@@ -1,10 +1,10 @@
-body{
+body.top_banner{
     margin: 0;
     padding: 0;
     height: 300vh;
     background-color: black;
 }
-body>nav{
+body.top_banner>nav{
     display: flex;
     justify-content: space-between;
     position: sticky;
@@ -137,6 +137,7 @@ body>nav{
             font-family: $font;
             font-size: 80px;
             color: white;
+            text-align: center;
         }
         .describe{
             color: white;
