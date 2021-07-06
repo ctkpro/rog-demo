@@ -179,14 +179,13 @@ body.opening{
     }
 }
 .warning-box{
-    // display: none;
     top: 10%;
 	right: 5%;
     // animation: show-up 1s ease-in-out 0s infinite alternate none;
     opacity: 0;
     animation-name: show-up;
     animation-delay: 1.5s;
-    animation-duration: .5s;
+    animation-duration: .4s;
     animation-iteration-count: 1;
     animation-direction: alternate;
     animation-timing-function: step-start;
