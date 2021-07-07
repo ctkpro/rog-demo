@@ -174,12 +174,21 @@
 					<div class="cancel">cancel</div>
 				</footer>
 			</div>
-			<video muted poster="https://static.playoverwatch.com/img/pages/hero-detail/staticposter-733c75265d.gif">
+			<video muted loop poster="https://static.playoverwatch.com/img/pages/hero-detail/staticposter-733c75265d.gif">
 				<source src="video/bg_2.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
 
 		</section>
+		<footer>
+			<div class="attribute-box">
+				<p>system os</p>
+				<p>FPS : 120/s</p>
+				<p>lorem: rgeokad</p>
+				<p>wfosdl: selvek</p>
+				<p>ero3fii: w9943</p>
+			</div>
+		</footer>
 
 		<script>
 			let nbs = document.querySelectorAll('.number a');
@@ -189,7 +198,8 @@
 			let pwd_box = document.querySelector('.pwd-box');	
 			let download_box = document.querySelector('.download-box');	
 			let system_boxs = document.querySelectorAll('.system-box');
-			let video = document.querySelector('video');		
+			let video = document.querySelector('video');
+			let attribute_box = document.querySelector('.attribute-box');
 			function clickEffect(ele,t){
 				setTimeout(() => {
 					ele.classList.add('active');
@@ -246,6 +256,7 @@
 					const ele = system_boxs[i];
 					ele.style.display = 'none';
 				}
+				attribute_box.style.display = 'none';
 			}, 11500);
 
 			setTimeout(() => {
