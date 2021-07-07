@@ -178,18 +178,51 @@ body.opening{
 		min-height: 120px;
     }
 }
-.warning-box{
+.warning-box1{
+    // display: none;
     top: 10%;
 	right: 5%;
-    // animation: show-up 1s ease-in-out 0s infinite alternate none;
     opacity: 0;
-    animation-name: show-up;
-    animation-delay: 1.5s;
-    animation-duration: .4s;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    animation-timing-function: step-start;
-    animation-fill-mode: forwards;
+    animation: show-up 0.3s step-start 1.5s 1 alternate forwards;
+    // animation-name: show-up;
+    // animation-delay: 1.5s;
+    // animation-duration: .3s;
+    // animation-iteration-count: 1;
+    // animation-direction: alternate;
+    // animation-timing-function: step-start;
+    // animation-fill-mode: forwards;
+    section{
+        animation-name: breathing-text;
+        animation-delay: 0s;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: none;
+    }
+}
+.warning-box2{
+    // display: none;
+    top: 15%;
+	right: 25%;
+    opacity: 0;
+    animation: show-up 0.3s step-start 3s 1 alternate forwards;
+    section{
+        animation-name: breathing-text;
+        animation-delay: 0s;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: none;
+    }
+}
+.warning-box3{
+    // display: none;
+    top: 20%;
+	left: 10%;
+    opacity: 0;
+    animation: show-up 0.3s step-start 4.2s 1 alternate forwards;
     section{
         animation-name: breathing-text;
         animation-delay: 0s;
@@ -240,7 +273,7 @@ body.opening{
     left: 8%;
     opacity: 0;
     animation-name: show-up;
-    animation-delay: 3.5s;
+    animation-delay: 5.7s;
     animation-duration: .4s;
     animation-iteration-count: 1;
     animation-direction: alternate;
@@ -303,6 +336,38 @@ body.opening{
         text-transform: uppercase;
     }
 }
+.terminal-box{
+    section{
+		display: block;
+		margin-top: 5px;
+		color: #ccc;
+		font-size: 16px;
+		font-weight: 200;
+		text-transform: lowercase;
+        overflow: hidden;
+        p{
+            animation: excute-code 0.3s linear 0.5s infinite normal none;
+        }
+	}
+}
+.terminal-box1{
+    left: 30%;
+    top: 8%;
+    opacity: 0;
+    animation: show-up 0.3s step-start 4.3s 1 alternate forwards;
+}
+.terminal-box2{
+    left: 20%;
+    bottom: 8%;
+    opacity: 0;
+    animation: show-up 0.3s step-start 4.9s 1 alternate forwards;
+}
+.terminal-box3{
+    right: 8%;
+    bottom: 8%;
+    opacity: 0;
+    animation: show-up 0.3s step-start 5.4s 1 alternate forwards;
+}
 
 
 
@@ -322,4 +387,13 @@ body.opening{
     78%{ opacity: 1;}
     93%{ opacity: 0;}
     100%{ opacity: 1;}
+}
+
+@keyframes excute-code {
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-40%);
+    }
 }

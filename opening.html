@@ -39,7 +39,7 @@
 				</defs>
 					<rect x='0' y='0' width="100%" height="100%" stroke="" fill="url(#p)" />
 			</svg>
-			<div class="warning-box system-box box-size-m">
+			<div class="warning-box1 system-box box-size-m">
 				<header>
 					<div class="title">warning</div>
 					<div class="close">&#10005</div>
@@ -54,6 +54,84 @@
 					<p>}</p>
 				</footer>
 			</div>
+			<div class="warning-box2 system-box box-size-m">
+				<header>
+					<div class="title">warning</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					system error
+				</section>
+				<footer>
+					<p>Class Rog extend React.class{</p>
+					<p class='indent-1'>this.state = virus;
+					</p>
+					<p>}</p>
+				</footer>
+			</div>
+			<div class="warning-box3 system-box box-size-m">
+				<header>
+					<div class="title">warning</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					system error
+				</section>
+				<footer>
+					<p>Class Rog extend React.class{</p>
+					<p class='indent-1'>this.state = virus;
+					</p>
+					<p>}</p>
+				</footer>
+			</div>
+
+			<div class="system-box terminal-box terminal-box1 box-size-m">
+				<header>
+					<div class="title">terminal</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus vero ducimus mollitia
+						 magnam quidem quasi sequi repellat! Dolore sed commodi tempora vel, perferendis perspiciatis quia.
+						  Atque accusamus praesentium nostrum Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						   Id, corrupti! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut.</p>	
+				</section>
+				<footer>
+					<p> >...</p>
+				</footer>
+			</div>
+			<div class="system-box terminal-box terminal-box2 box-size-m">
+				<header>
+					<div class="title">terminal</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus vero ducimus mollitia
+						 magnam quidem quasi sequi repellat! Dolore sed commodi tempora vel, perferendis perspiciatis quia.
+						  Atque accusamus praesentium nostrum Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						   Id, corrupti! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut.</p>	
+				</section>
+				<footer>
+					<p> >...</p>
+				</footer>
+			</div>
+			<div class="system-box terminal-box terminal-box3 box-size-m">
+				<header>
+					<div class="title">terminal</div>
+					<div class="close">&#10005</div>
+				</header>
+				<section>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus vero ducimus mollitia
+						 magnam quidem quasi sequi repellat! Dolore sed commodi tempora vel, perferendis perspiciatis quia.
+						  Atque accusamus praesentium nostrum Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						   Id, corrupti! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut.</p>	
+				</section>
+				<footer>
+					<p> >...</p>
+				</footer>
+			</div>
+
+
 			<div class="pwd-box system-box box-size-s">
 				<header>
 					<div class="title">enter access code</div>
@@ -110,6 +188,7 @@
 			let warning_box = document.querySelector('.warning-box');
 			let pwd_box = document.querySelector('.pwd-box');	
 			let download_box = document.querySelector('.download-box');	
+			let system_boxs = document.querySelectorAll('.system-box');
 			let video = document.querySelector('video');		
 			function clickEffect(ele,t){
 				setTimeout(() => {
@@ -156,22 +235,23 @@
 				}
 			}
 
-			setTimeout(() => { do_password('27072080');}, 4200);
+			setTimeout(() => { do_password('27072080');}, 6600);
 
-			setTimeout(() => { download_box.style.opacity = 1;}, 7200);
+			setTimeout(() => { download_box.style.opacity = 1;}, 9000);
 
-			setTimeout(() => { progress();}, 7500);
+			setTimeout(() => { progress();}, 9100);
 
 			setTimeout(() => {
-				warning_box.style.display = 'none';
-				pwd_box.style.display = 'none';
-				download_box.style.display = 'none';
-			}, 10500);
+				for (let i = 0; i < system_boxs.length; i++) {
+					const ele = system_boxs[i];
+					ele.style.display = 'none';
+				}
+			}, 11500);
 
 			setTimeout(() => {
 				video.style.opacity = 1;
 				video.play();
-			}, 11000);
+			}, 12000);
 		</script>
 	</body>
 </html>
