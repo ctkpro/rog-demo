@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Opening</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="css/theme-update.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js'></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	</head>
+	<body class="timemachine">
+		<svg>
+			<defs>
+				<pattern id="p" patternUnits="userSpaceOnUse" width="50" height="50">
+					<rect width="50" height="50" stroke="#eee" fill="transparent" x="0" y="0"></rect>
+				</pattern>
+			</defs>
+				<rect x='0' y='0' width="100%" height="100%" stroke="" fill="url(#p)" />
+		</svg>
+		<nav>
+			<ul>
+				<li>system1</li>
+				<li>system2 Lorem ipsum dolor sit amet</li>
+				<li>system3 Lorem ipsum</li>
+				<li>system4</li>
+				<li>system5 Lorem ipsum dolor</li>
+				<li>system6 Lorem</li>
+				<li>system7</li>
+			</ul>
+		</nav>
+		<section class="">
+			<aside>
+				<ul>
+					<li class="anchor" data-slide="0">01</li>
+					<li class="anchor" data-slide="1">02</li>
+					<li class="anchor" data-slide="2">03</li>
+					<li class="anchor" data-slide="3">04</li>
+					<li class="anchor" data-slide="4">05</li>
+				</ul>
+			</aside>
+			<div class="cards-box">
+				<div class="card" data-slide='0'>
+					<div class="card-content">
+						test1
+					</div>
+				</div>
+				<div class="card" data-slide='1'>
+					<div class="card-content">
+						test2
+					</div>
+				</div>
+				<div class="card" data-slide='2'>
+					<div class="card-content">
+						test3
+					</div>
+				</div>
+				<div class="card" data-slide='3'>
+					<div class="card-content">
+						test4
+					</div>
+				</div>
+				<div class="card" data-slide='4'>
+					<div class="card-content">
+						test5
+					</div>
+				</div>
+				
+			</div>
+			
+		</section>
+		<canvas ></canvas>
+
+		<footer>
+			<!-- <div class="attribute-box">
+				<p>system os</p>
+				<p>FPS : 120/s</p>
+				<p>lorem: rgeokad</p>
+				<p>wfosdl: selvek</p>
+				<p>ero3fii: w9943</p>
+			</div> -->
+		</footer>
+
+		<script>
+			let cards = document.querySelectorAll('.card');
+			let ancords = document.querySelectorAll('aside li');
+			let cardsIndexes = [];
+			cards.forEach( ele => {
+				cardsIndexes.push(ele.dataset.slide);
+				ele.addEventListener('click', () => {
+					setNumberToFirst(ele.dataset.slide);
+					setIndex();
+				})
+			})
+			ancords.forEach( ele => {
+				ele.addEventListener('click', () => {
+					setNumberToFirst(ele.dataset.slide);
+					setIndex();
+
+					setTimeout(() => {
+						drawLine( getLinePoints(ele) );
+					}, 200);
+				})
+
+				ele.addEventListener('mouseenter',() => {
+					setTimeout(() => {
+						drawLine( getLinePoints(ele) );
+					}, 200);
+				})
+				ele.addEventListener('mouseleave',() => {
+					ctx.clearRect(0, 0, c.width, c.height);
+				})
+
+			})
+
+
+			function setIndex(){
+				cards.forEach( (ele,i) => {
+					ele.dataset.slide = cardsIndexes[i]
+				})
+				ancords.forEach( (ele,i) => {
+					ele.dataset.slide = cardsIndexes[i]
+				})
+			}
+
+			function setNumberToFirst(index){
+				for (let i = 0; i < index; i++) {
+					cardsIndexes.unshift(cardsIndexes.pop());
+				}
+			}
+
+			let c = document.querySelector('canvas');
+			let ctx = c.getContext("2d");
+
+			function resizeCanvas(){
+				c.width = window.innerWidth;
+    			c.height = window.innerHeight;
+			}
+			resizeCanvas();
+			window.addEventListener('resize', resizeCanvas, false);
+
+			ctx.lineWidth = 1;
+			ctx.strokeStyle = '#eee'
+			
+			let vertices=[];
+			let t = 1;
+			function drawLine(pts){
+				ctx.clearRect(0, 0, c.width, c.height);
+				vertices = [];
+				t = 1;
+				let divid = 20;
+				for(let i=1;i<pts.length;i++){
+					let pt0 = pts[i-1];
+					let pt1 = pts[i];
+					let dx = pt1.x - pt0.x;
+					let dy = pt1.y - pt0.y;
+					for(let j=0;j<divid;j++){
+						let x = pt0.x + dx*j/divid;
+						let y = pt0.y + dy*j/divid;
+						vertices.push({x:x, y:y});
+					}
+				}
+				animate();
+			}
+
+			function animate() {
+				if (t < vertices.length - 1) {
+					requestAnimationFrame(animate);
+				}
+				ctx.beginPath();
+				ctx.moveTo(vertices[t - 1].x, vertices[t - 1].y);
+				ctx.lineTo(vertices[t].x, vertices[t].y);
+				ctx.stroke();
+				t++;
+			}
+
+			function getLinePoints(ele){
+				let anchor = {};
+				let target = {};
+				let anchorOffset = {};
+				let targetOffset = {};
+				let tag = ele.dataset.slide;
+				let points = document.querySelectorAll("[data-slide='"+ tag +"']");
+
+				points.forEach( pt => {
+					if( pt.classList.contains("anchor") ){
+						h = pt.offsetHeight;
+						anchor.x = pt.getBoundingClientRect().right + 30;
+						anchor.y = pt.getBoundingClientRect().top + h/2;
+						anchorOffset.x = anchor.x + 50;
+						anchorOffset.y = anchor.y;
+					}else{
+						target.x = pt.getBoundingClientRect().left - 30;
+						target.y = pt.getBoundingClientRect().top + 5;
+						targetOffset.x = target.x - 50;
+						targetOffset.y = target.y;
+					}
+				})
+				return [anchor, anchorOffset, targetOffset, target];
+			}
+
+
+		</script>
+	</body>
+</html>
