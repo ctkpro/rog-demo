@@ -6,6 +6,7 @@ $red: #B13638;
 body.timemachine{
     position: relative;
     margin: 0;
+    padding: 10px;
     height: calc(100vh - 2px);
     border: 1px solid red;
     background-color: $black;
@@ -20,40 +21,145 @@ body.timemachine{
             stroke: $dark-blue;
         }
     }
-    nav{
-        ul{
+    >header{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        font-family: $font;
+        opacity: 0.4;
+        p{
+            margin: 0 5px;
+        }
+        .header-left{
             display: flex;
-            justify-content: space-between;
-            margin: 0;
-            padding: 8px 10px;
-            >li{
-                margin-right: 5px;
-                padding: 5px 10px;
-                // width: 100%;
-                min-width: 9%;
-                border: 1px solid $brand;
-                color: $brand;
-                &:nth-child(1){
+            width: 35%;
+            color: white;
+            font-size: 16px;
+            
+            .decoration-block{
+                width: 35%;
+                p{
+                    color: transparent;
+                    &:nth-child(1){
+                        background-image: linear-gradient(to right, #333 70%, #444 30%);
+                    }
                 }
-                &:nth-child(2){
+                p{
+                    &:nth-child(2){
+                        background-image: linear-gradient(to right, #999 70%, transparent 30%);
+                    }
                 }
-                &:last-child{
-                    margin-right: 0;
+            }
+            .text1{
+                width: 30%;
+            }
+            .text2{
+                p{
+                    color: darken($brand,20);
+                }
+            }
+        }
+        .header-right{
+            width: 45%;
+            .window-title{
+                padding: 5px;
+                color: #ccc;
+                font-size: 22px;
+                background-color: #333;
+                text-transform: uppercase;
+            }
+            p{
+                color:#999;
+            }
+            .window-content{
+                position: relative;
+                nav{
+                    display: flex;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 5px 0;
+                    color: #999;
+                    .button{
+                        margin-right: 5px;
+                        padding: 5px 20px;
+                        width: 60px;
+                        border: 1px solid #555;
+                        font-size: 18px;
+                        text-transform: uppercase;
+                        &:last-child{
+                            margin-right: 0;
+                            border: 1px solid $brand;
+                            background-color: rgba($brand,0.4);
+                        }
+                    }
                 }
             }
         }
     }
 
     >footer{
-        .attribute-box{
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            padding: 10px;
-            width: 150px;
-            height: 200px;
-            border: 1px solid $brand;
-            color: #aaa;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        width: 100%;
+        font-family: $font;
+        color: white;
+        z-index: -1;
+        .window-title{
+            height: 15px;
+            background-color: #333;
+        }
+        .window-content{
+            display: flex;
+            justify-content: space-between;
+            .left{
+                display: flex;
+                width: 45%;
+                .button{
+                    &:first-child{
+                        border: 1px solid $brand;
+                        background-color: rgba($brand,0.4);
+                    }
+                }
+            }
+            .right{
+                width: 40%;
+                nav{
+                    display: flex;
+                    justify-content: flex-end;
+                    width: 100%;
+                }
+                .button{
+                    width: 150px;
+                    &:nth-child(2){
+                        border: 1px solid $brand;
+                        background-color: rgba($brand,0.4);
+                    }
+                }
+            }
+            nav{
+                display: flex;
+                padding: 5px 0;
+                width: 50%;
+                color: #999;
+            }
+            .button{
+                margin-right: 5px;
+                padding: 5px 20px;
+                height: 22px;
+                border: 1px solid #555;
+                font-size: 16px;
+                text-transform: uppercase;
+                
+            }
+            .decoration-text{
+                p{
+                    margin: 1px 0;
+                    color: #aaa;
+                }
+            }
         }
     }
 
@@ -62,23 +168,26 @@ body.timemachine{
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 100vh;
+        height: 80%;
         border: 1px solid yellow;
         aside{
             position: absolute;
-            left: 20px;
+            left: 15px;
 
             ul{
                 display: flex;
-                flex-direction: column;
+                flex-direction: column-reverse;
                 padding: 0;
-                border: 1px solid tomato;
                 >li{
-                    padding: 20px;
-                    color: white;
-                    font-size: 26px;
+                    margin-top: 20px;
+                    padding: 10px;
+                    color: #999;
+                    font-size: 22px;
                     transform: rotate(-90deg);
-                    border: 1px solid red;
+                    cursor: pointer;
+                    &:hover,&.active{
+                        color: $brand;
+                    }
                 }
             }
         }
@@ -92,17 +201,18 @@ body.timemachine{
     }
     .cards-box{
         position: relative;
-        border: 5px solid pink;
-        width: 800px;
-        transform: translate(0, -200px);
+        // border: 5px solid pink;
+        width: 750px;
+        transform: translate(0, -250px);
         .card{
             position: absolute;
             top: 0;
             left: 0;
-            width: 800px;
-            height: 500px;
-            border: 1px solid red;
-            background: #f7fffd;
+            width: 100%;
+            height: 440px;
+            // border: 1px solid red;
+            background: black;
+            box-shadow: 0px -1px 20px 3px rgba(black,0.8);
             transition: all 0.2s linear;
 
             &[data-slide='0']{
@@ -111,24 +221,98 @@ body.timemachine{
                 opacity: 1;
             }
             &[data-slide='1']{
-                transform: translate(0px, -50px) scale(0.95);
+                transform: translate(0px, -40px) scale(0.95);
                 z-index: 5;
                 opacity: 0.9;
             }
             &[data-slide='2']{
-                transform: translate(0px, -95px) scale(0.9);
+                transform: translate(0px, -75px) scale(0.9);
                 z-index: 4;
                 opacity: 0.8;
             }
             &[data-slide='3']{
-                transform: translate(0px, -135px) scale(0.85);
+                transform: translate(0px, -107px) scale(0.85);
                 z-index: 3;
                 opacity: 0.7;
             }
             &[data-slide='4']{
-                transform: translate(0px, -170px) scale(0.8);
+                transform: translate(0px, -136px) scale(0.8);
                 z-index: 2;
                 opacity: 0.6;
+            }
+
+            .card-title{
+                margin-bottom: 5px;
+                padding: 5px 10px;
+                background-color: $brand;
+                font-family: $font;
+                font-size: 24px;
+                font-weight: 500;
+                color: #eee;
+            }
+            .card-content{
+                display: flex;
+                justify-content: space-around;
+                padding: 5px;
+                height: 90%;
+                border: 1px solid white;
+                .featured-image{
+                    width: 55%;
+                    object-fit: cover;
+                }
+                .story{
+
+                }
+            }
+
+        }
+    }
+    >nav{
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translate(0, -50%);
+        ul{
+            display: flex;
+            flex-direction: column;
+        }
+        li{
+            display: inline-block;
+            position: relative;
+            margin-bottom: 20px;
+            width: 10px;
+            background-color: #eee;
+            cursor: pointer;
+            &.active,&:hover{
+                background-color: $brand;
+            }
+            &:hover{
+                // content: '';
+                // position: absolute;
+                // top: 0;
+                // left: -20px;
+                // width: 20px;
+                // height: 20px;
+                // background-color: #fff;
+            }
+
+            &:nth-child(1){
+                height: 30px;
+            }
+            &:nth-child(2){
+                height: 50px;
+            }
+            &:nth-child(3){
+                height: 20px;
+            }
+            &:nth-child(4){
+                height: 50px;
+            }
+            &:nth-child(5){
+                height: 60px;
+            }
+            &:nth-child(6){
+                height: 20px;
             }
         }
     }

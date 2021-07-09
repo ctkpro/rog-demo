@@ -20,17 +20,37 @@
 			</defs>
 				<rect x='0' y='0' width="100%" height="100%" stroke="" fill="url(#p)" />
 		</svg>
-		<nav>
-			<ul>
-				<li>system1</li>
-				<li>system2 Lorem ipsum dolor sit amet</li>
-				<li>system3 Lorem ipsum</li>
-				<li>system4</li>
-				<li>system5 Lorem ipsum dolor</li>
-				<li>system6 Lorem</li>
-				<li>system7</li>
-			</ul>
-		</nav>
+		<header>
+			<div class="header-left">
+				<div class="decoration-text text1">
+					<p>Lorem ipsum dolor sit</p>
+					<p>Lorem ipsumdolor amet iwew</p>
+				</div>
+				<div class="decoration-block">
+					<p class="block">placeholder</p>
+					<p class="block">placeholder</p>
+				</div>
+				<div class="decoration-text text2">
+					<p>Coordinates : 128.56, 38.95</p>
+					<p>Element : width 58, height 96</p>
+				</div>
+			</div>
+			<div class="header-right">
+				<div class="window-title">
+					fate war
+				</div>
+				<div class="window-content">
+					<p>Lorem ipsum dolor</p>
+					<p>Lorem rwfwefw sit amet 131021.13 13121.12</p>
+					<p>Consectetur adipisicing elit 3239.23 2332.00</p>
+					<nav>
+						<div class="button">fate war</div>
+						<div class="button">test xyz</div>
+						<div class="button">ctkpro</div>
+					</nav>
+				</div>
+			</div>
+		</header>
 		<section class="">
 			<aside>
 				<ul>
@@ -43,45 +63,78 @@
 			</aside>
 			<div class="cards-box">
 				<div class="card" data-slide='0'>
+					<div class="card-title">FATE WAR</div>
 					<div class="card-content">
-						test1
+						<img src="img/worldview/war_s.jpg"" class="featured-image" alt="">
+						<img src="img/worldview/story.png"" class="story" alt="">
 					</div>
 				</div>
 				<div class="card" data-slide='1'>
+					<div class="card-title">FOR THOSE WHO DARE</div>
 					<div class="card-content">
-						test2
+						<img src="img/worldview/city_s.jpg"" class="featured-image" alt="">
+						<img src="img/worldview/story.png"" class="story" alt="">
 					</div>
 				</div>
 				<div class="card" data-slide='2'>
+					<div class="card-title">INTRODUCTION</div>
 					<div class="card-content">
-						test3
+						<img src="img/worldview/enemy_s.jpg"" class="featured-image" alt="">
+						<img src="img/worldview/story.png"" class="story" alt="">
 					</div>
 				</div>
 				<div class="card" data-slide='3'>
+					<div class="card-title">G.U.N</div>
 					<div class="card-content">
-						test4
+						<img src="img/worldview/joker_s.jpg"" class="featured-image" alt="">
+						<img src="img/worldview/story.png"" class="story" alt="">
 					</div>
 				</div>
 				<div class="card" data-slide='4'>
+					<div class="card-title">G.A.M.E.Rs</div>
 					<div class="card-content">
-						test5
+						<img src="img/worldview/soldier_s.jpg"" class="featured-image" alt="">
+						<img src="img/worldview/story.png"" class="story" alt="">
 					</div>
 				</div>
 				
 			</div>
 			
 		</section>
-		<canvas ></canvas>
-
 		<footer>
-			<!-- <div class="attribute-box">
-				<p>system os</p>
-				<p>FPS : 120/s</p>
-				<p>lorem: rgeokad</p>
-				<p>wfosdl: selvek</p>
-				<p>ero3fii: w9943</p>
-			</div> -->
+			<div class="window-title"></div>
+			<div class="window-content">
+				<div class="left">
+					<nav>
+						<div class="button">fate war</div>
+						<div class="button">test xyz</div>
+						<div class="button">ctkpro</div>
+					</nav>
+					<div class="decoration-text">
+						<p>Coordinates : 128.56, 38.95</p>
+						<p>Element : width 58, height 96</p>
+					</div>
+				</div>
+				<div class="right">
+					<nav>
+						<div class="button">fate war</div>
+						<div class="button">test xyz</div>
+						<div class="button">ctkpro</div>
+					</nav>
+				</div>
+			</div>
 		</footer>
+		<nav>
+			<ul>
+				<li></li>
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</nav>
+		<canvas ></canvas>
 
 		<script>
 			let cards = document.querySelectorAll('.card');
@@ -142,7 +195,7 @@
 			window.addEventListener('resize', resizeCanvas, false);
 
 			ctx.lineWidth = 1;
-			ctx.strokeStyle = '#eee'
+			ctx.strokeStyle = '#ff0029'
 			
 			let vertices=[];
 			let t = 1;
@@ -187,14 +240,14 @@
 				points.forEach( pt => {
 					if( pt.classList.contains("anchor") ){
 						h = pt.offsetHeight;
-						anchor.x = pt.getBoundingClientRect().right + 30;
+						anchor.x = pt.getBoundingClientRect().right + 20;
 						anchor.y = pt.getBoundingClientRect().top + h/2;
 						anchorOffset.x = anchor.x + 50;
 						anchorOffset.y = anchor.y;
 					}else{
 						target.x = pt.getBoundingClientRect().left - 30;
 						target.y = pt.getBoundingClientRect().top + 5;
-						targetOffset.x = target.x - 50;
+						targetOffset.x = target.x - 100;
 						targetOffset.y = target.y;
 					}
 				})
