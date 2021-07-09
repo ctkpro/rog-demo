@@ -41,12 +41,14 @@ body.timemachine{
                 p{
                     color: transparent;
                     &:nth-child(1){
-                        background-image: linear-gradient(to right, #333 70%, #444 30%);
+                        background-image: linear-gradient(to right, #333 70%, #666 30%);
+                        animation: block-move 2s linear 0s infinite alternate none;
                     }
                 }
                 p{
                     &:nth-child(2){
                         background-image: linear-gradient(to right, #999 70%, transparent 30%);
+                        animation: block-move 2s linear 1s infinite alternate none;
                     }
                 }
             }
@@ -280,44 +282,85 @@ body.timemachine{
             display: inline-block;
             position: relative;
             margin-bottom: 20px;
-            width: 10px;
-            background-color: #eee;
-            cursor: pointer;
-            &.active,&:hover{
-                background-color: $brand;
+            span{
+                display: inline-block;
+                width: 10px;
+                height: 100%;
+                background-color: #eee;
+                transform: skewY(45deg);
+                cursor: pointer;
             }
-            &:hover{
-                // content: '';
-                // position: absolute;
-                // top: 0;
-                // left: -20px;
-                // width: 20px;
-                // height: 20px;
-                // background-color: #fff;
+            
+            &.active,&:hover{
+                span{
+                    background-color: $brand;
+                }
+                .tooltip{
+                    display: inline-block;
+                }
+            }
+        
+            .tooltip{
+                display: none;
+                position: absolute;
+                top: -20px;
+                left: -210px;
+                box-sizing: border-box;
+                padding: 12px;
+                width: 180px;
+                height: 100%;
+                background-color: #555;
+                font-family: $font;
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 1;
+                color: #eee;
+                text-transform: uppercase;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: -20px;
+                    width: 20px;
+                    height: 100%;
+                    background-color: #555;
+                    transform: skewY(30deg);
+                    transform-origin: top left;
+                }
             }
 
             &:nth-child(1){
-                height: 30px;
+                height: 50px;
             }
             &:nth-child(2){
-                height: 50px;
+                height: 75px;
             }
             &:nth-child(3){
-                height: 20px;
+                height: 40px;
             }
             &:nth-child(4){
-                height: 50px;
+                height: 75px;
             }
             &:nth-child(5){
-                height: 60px;
+                height: 90px;
             }
             &:nth-child(6){
-                height: 20px;
+                height: 40px;
             }
         }
     }
 
 
-
+    @keyframes block-move{
+        10%{
+            background-image: linear-gradient(to right, #333 40%, #666 40%);
+        }
+        20%{
+            background-image: linear-gradient(to right, #333 70%, #666 70%);
+        }
+        100%{
+            background-image: linear-gradient(to right, #333 20%, #666 20%);
+        }
+    }
 
 }

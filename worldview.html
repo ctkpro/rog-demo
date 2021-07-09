@@ -111,7 +111,7 @@
 						<div class="button">ctkpro</div>
 					</nav>
 					<div class="decoration-text">
-						<p>Coordinates : 128.56, 38.95</p>
+						<p class="coordinates">Coordinates : <span>128.56, 38.95</span></p>
 						<p>Element : width 58, height 96</p>
 					</div>
 				</div>
@@ -126,12 +126,30 @@
 		</footer>
 		<nav>
 			<ul>
-				<li></li>
-				<li class="active"></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+				<li>
+					<div class="tooltip">OPENING</div>
+					<span></span>
+				</li>
+				<li class="active">
+					<div class="tooltip">ROG worldview chronicle</div>
+					<span></span>
+				</li>
+				<li>
+					<div class="tooltip">G.A.M.E.Rs</div>
+					<span></span>
+				</li>
+				<li>
+					<div class="tooltip">Universe</div>
+					<span></span>
+				</li>
+				<li>
+					<div class="tooltip">MEDIAS</div>
+					<span></span>
+				</li>
+				<li>
+					<div class="tooltip">Behind the Scene</div>
+					<span></span>
+				</li>
 			</ul>
 		</nav>
 		<canvas ></canvas>
@@ -199,10 +217,14 @@
 			
 			let vertices=[];
 			let t = 1;
+			let textPos = {};
+			let text = '';
 			function drawLine(pts){
 				ctx.clearRect(0, 0, c.width, c.height);
 				vertices = [];
 				t = 1;
+				textPos.x = pts[2].x;
+				textPos.y = pts[2].y - 20;
 				let divid = 20;
 				for(let i=1;i<pts.length;i++){
 					let pt0 = pts[i-1];
@@ -217,16 +239,24 @@
 				}
 				animate();
 			}
-
-			function animate() {
+			
+			function animate(textPos) {
 				if (t < vertices.length - 1) {
 					requestAnimationFrame(animate);
+				}else{
+					animateText();
 				}
 				ctx.beginPath();
 				ctx.moveTo(vertices[t - 1].x, vertices[t - 1].y);
 				ctx.lineTo(vertices[t].x, vertices[t].y);
 				ctx.stroke();
 				t++;
+			}
+			function animateText(){
+				ctx.fillStyle = "white";
+				ctx.font = "14px Arial";
+				ctx.fillText(text, textPos.x, textPos.y);
+				console.log(textPos);
 			}
 
 			function getLinePoints(ele){
@@ -249,11 +279,24 @@
 						target.y = pt.getBoundingClientRect().top + 5;
 						targetOffset.x = target.x - 100;
 						targetOffset.y = target.y;
+
+						text = pt.querySelector('.card-title').innerText;
 					}
 				})
 				return [anchor, anchorOffset, targetOffset, target];
 			}
 
+			let section = document.querySelector('section');
+			let coordinates = document.querySelector('.coordinates span');
+			section.addEventListener('mousemove', e =>{
+				showCoords(e);
+			})
+			function showCoords(e) {
+				let x = e.clientX;
+				let y = e.clientY;
+				let coor = "X coords: " + x + ", Y coords: " + y;
+				coordinates.innerHTML = coor;
+			}
 
 		</script>
 	</body>
