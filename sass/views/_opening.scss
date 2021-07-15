@@ -197,7 +197,7 @@ body.opening{
     }
 }
 .warning-box1{
-    // display: none;
+    display: none;
     top: 10%;
 	right: 5%;
     opacity: 0;
@@ -219,38 +219,7 @@ body.opening{
         animation-fill-mode: none;
     }
 }
-.warning-box2{
-    // display: none;
-    top: 15%;
-	right: 25%;
-    opacity: 0;
-    animation: show-up 0.3s step-start 3s 1 alternate forwards;
-    section{
-        animation-name: breathing-text;
-        animation-delay: 0s;
-        animation-duration: 0.8s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-        animation-timing-function: ease-in-out;
-        animation-fill-mode: none;
-    }
-}
-.warning-box3{
-    // display: none;
-    top: 20%;
-	left: 10%;
-    opacity: 0;
-    animation: show-up 0.3s step-start 4.2s 1 alternate forwards;
-    section{
-        animation-name: breathing-text;
-        animation-delay: 0s;
-        animation-duration: 0.8s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-        animation-timing-function: ease-in-out;
-        animation-fill-mode: none;
-    }
-}
+
 .download-box{
     --progress: 0%;
     top: 50%;
@@ -291,8 +260,8 @@ body.opening{
     left: 8%;
     opacity: 0;
     animation-name: show-up;
-    animation-delay: 5.7s;
-    animation-duration: .4s;
+    animation-delay: 2.9s;
+    animation-duration: .3s;
     animation-iteration-count: 1;
     animation-direction: alternate;
     animation-timing-function: step-start;
@@ -372,19 +341,19 @@ body.opening{
     left: 30%;
     top: 8%;
     opacity: 0;
-    animation: show-up 0.3s step-start 4.3s 1 alternate forwards;
+    animation: show-up 0.3s step-start 0.5s 1 alternate forwards;
 }
 .terminal-box2{
     left: 20%;
     bottom: 8%;
     opacity: 0;
-    animation: show-up 0.3s step-start 4.9s 1 alternate forwards;
+    animation: show-up 0.3s step-start 1.5s 1 alternate forwards;
 }
 .terminal-box3{
     right: 8%;
     bottom: 8%;
     opacity: 0;
-    animation: show-up 0.3s step-start 5.4s 1 alternate forwards;
+    animation: show-up 0.3s step-start 2.2s 1 alternate forwards;
 }
 
 

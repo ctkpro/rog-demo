@@ -54,36 +54,6 @@
 					<p>}</p>
 				</footer>
 			</div>
-			<div class="warning-box2 system-box box-size-m">
-				<header>
-					<div class="title">warning</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					system error
-				</section>
-				<footer>
-					<p>Class Rog extend React.class{</p>
-					<p class='indent-1'>this.state = virus;
-					</p>
-					<p>}</p>
-				</footer>
-			</div>
-			<div class="warning-box3 system-box box-size-m">
-				<header>
-					<div class="title">warning</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					system error
-				</section>
-				<footer>
-					<p>Class Rog extend React.class{</p>
-					<p class='indent-1'>this.state = virus;
-					</p>
-					<p>}</p>
-				</footer>
-			</div>
 
 			<div class="system-box terminal-box terminal-box1 box-size-m">
 				<header>
@@ -214,7 +184,7 @@
 				}, t);
 			}
 			function do_password(pwd){
-				let delay = 250;
+				let delay = 200;
 				let input_text = '';
 				for (let i = 0; i < pwd.length; i++) {
 					let ele = pwd[i] == 0 ? nbs[9] : nbs[ pwd[i]-1 ];
@@ -224,7 +194,7 @@
 					encodeEffect(encode_pwd, input_text, i*delay);
 				}
 				clickEffect( enter,pwd.length*delay);
-				encodeEffect( encode_pwd, 'access granted', pwd.length*delay+500);
+				encodeEffect( encode_pwd, 'access granted', pwd.length*delay+400);
 			}
 
 			function progress() {
@@ -238,18 +208,18 @@
 						clearInterval(frameId);
 						status.innerText = 'finished';
 					}else{
-						rate++;
+						rate+= 3;
 						bar.style.width = rate + '%';
 						process.innerText = rate + '%';
 					}
 				}
 			}
 
-			setTimeout(() => { do_password('27072080');}, 6600);
+			setTimeout(() => { do_password('270720');}, 3400);
 
-			setTimeout(() => { download_box.style.opacity = 1;}, 9000);
+			setTimeout(() => { download_box.style.opacity = 1;}, 5200);
 
-			setTimeout(() => { progress();}, 9100);
+			setTimeout(() => { progress();}, 5500);
 
 			setTimeout(() => {
 				for (let i = 0; i < system_boxs.length; i++) {
@@ -257,12 +227,12 @@
 					ele.style.display = 'none';
 				}
 				attribute_box.style.display = 'none';
-			}, 11500);
+			}, 6600);
 
 			setTimeout(() => {
 				video.style.opacity = 1;
 				video.play();
-			}, 12000);
+			}, 7200);
 		</script>
 	</body>
 </html>
