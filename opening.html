@@ -55,37 +55,20 @@
 				</footer>
 			</div>
 
-			<div class="system-box terminal-box terminal-box1 box-size-m">
+			<div class="system-box terminal-box terminal-box1 box-size-l">
 				<header>
 					<div class="title">terminal</div>
 					<div class="close">&#10005</div>
 				</header>
 				<section>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus vero ducimus mollitia
-						 magnam quidem quasi sequi repellat! Dolore sed commodi tempora vel, perferendis perspiciatis quia.
-						  Atque accusamus praesentium nostrum Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						   Id, corrupti! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut.</p>	
+					<p class='first'>rog_system > <span></span></p>
+					<p class='second'>rog_system > <span></span></p>
 				</section>
 				<footer>
 					<p> >...</p>
 				</footer>
 			</div>
 			<div class="system-box terminal-box terminal-box2 box-size-m">
-				<header>
-					<div class="title">terminal</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus vero ducimus mollitia
-						 magnam quidem quasi sequi repellat! Dolore sed commodi tempora vel, perferendis perspiciatis quia.
-						  Atque accusamus praesentium nostrum Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						   Id, corrupti! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut.</p>	
-				</section>
-				<footer>
-					<p> >...</p>
-				</footer>
-			</div>
-			<div class="system-box terminal-box terminal-box3 box-size-m">
 				<header>
 					<div class="title">terminal</div>
 					<div class="close">&#10005</div>
@@ -170,6 +153,33 @@
 			let system_boxs = document.querySelectorAll('.system-box');
 			let video = document.querySelector('video');
 			let attribute_box = document.querySelector('.attribute-box');
+
+			
+			let i = 0;
+			let txt = 'Lorem ipsum typing effect!Lorem ipsum dolor sit amet';
+			let speed = 40;
+			function typeWriter() {
+				if (i < txt.length) {
+					document.querySelector('.terminal-box1 section p.first span').innerHTML += txt.charAt(i);
+					i++;
+					setTimeout(typeWriter, speed);
+				}else{
+					document.querySelector('.terminal-box1 section p.second').style.display = 'block';
+					typeWriter2();
+				}
+			}
+			let j = 0;
+			let txt2 = 'Lorem ipsum dolor sit amet';
+			function typeWriter2() {
+				if (j < txt2.length) {
+					document.querySelector('.terminal-box1 section p.second span').innerHTML += txt2.charAt(j);
+					j++;
+					setTimeout(typeWriter2, speed);
+				}
+			}
+			typeWriter();
+
+
 			function clickEffect(ele,t){
 				setTimeout(() => {
 					ele.classList.add('active');
@@ -208,16 +218,22 @@
 						clearInterval(frameId);
 						status.innerText = 'finished';
 					}else{
-						rate+= 3;
+						rate_set = 3;
+						if( rate > 50 ){
+							rate_set = 1;
+						}else if(rate > 80){
+							rate_set = 2;
+						} 
+						rate+= rate_set;
 						bar.style.width = rate + '%';
 						process.innerText = rate + '%';
 					}
 				}
 			}
 
-			setTimeout(() => { do_password('270720');}, 3400);
+			setTimeout(() => { do_password('270720');}, 4000);
 
-			setTimeout(() => { download_box.style.opacity = 1;}, 5200);
+			setTimeout(() => { download_box.style.opacity = 1;}, 5400);
 
 			setTimeout(() => { progress();}, 5500);
 
@@ -227,12 +243,12 @@
 					ele.style.display = 'none';
 				}
 				attribute_box.style.display = 'none';
-			}, 6600);
+			}, 6800);
 
 			setTimeout(() => {
 				video.style.opacity = 1;
 				video.play();
-			}, 7200);
+			}, 7400);
 		</script>
 	</body>
 </html>

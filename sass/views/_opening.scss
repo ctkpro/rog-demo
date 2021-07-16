@@ -196,6 +196,15 @@ body.opening{
 		min-height: 120px;
     }
 }
+.box-size-l{
+    width: 800px;
+    section{
+        height: 200px;
+        p{
+            font-size: 20px;
+        }
+    }
+}
 .warning-box1{
     display: none;
     top: 10%;
@@ -260,7 +269,7 @@ body.opening{
     left: 8%;
     opacity: 0;
     animation-name: show-up;
-    animation-delay: 2.9s;
+    animation-delay: 3.9s;
     animation-duration: .3s;
     animation-iteration-count: 1;
     animation-direction: alternate;
@@ -332,28 +341,29 @@ body.opening{
 		font-weight: 200;
 		text-transform: lowercase;
         overflow: hidden;
-        p{
-            animation: excute-code 0.3s linear 0.5s infinite normal none;
-        }
 	}
 }
 .terminal-box1{
     left: 30%;
-    top: 8%;
-    opacity: 0;
-    animation: show-up 0.3s step-start 0.5s 1 alternate forwards;
+    top: 18%;
+    // opacity: 0;
+    // animation: show-up 0.3s step-start 0.5s 1 alternate forwards;
+    section{
+        p.second{
+            display: none;
+        }
+    }
 }
 .terminal-box2{
-    left: 20%;
+    right: 15%;
     bottom: 8%;
     opacity: 0;
-    animation: show-up 0.3s step-start 1.5s 1 alternate forwards;
-}
-.terminal-box3{
-    right: 8%;
-    bottom: 8%;
-    opacity: 0;
-    animation: show-up 0.3s step-start 2.2s 1 alternate forwards;
+    animation: show-up 0.3s step-start 3.5s 1 alternate forwards;
+    section{
+        p{
+            animation: excute-code 0.3s linear 0.5s infinite normal none;
+        }
+    }
 }
 
 
