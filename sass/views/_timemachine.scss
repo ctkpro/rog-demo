@@ -193,6 +193,26 @@ body.timemachine{
                 }
             }
         }
+
+        &#gamers,&#universe,&#medias,&#bts{
+            width: 100%;
+            height: 600px;
+            transform-origin: top;
+            transform: scale(0.8);
+        }
+        &#gamers{
+            background-color: yellow;
+        }
+        &#universe{
+            background-color: lightgreen;
+        }
+        &#medias{
+            background-color: lightblue;
+        }
+        &#bts{
+            background-color: rebeccapurple;
+        }
+
     }
     canvas{
         position: absolute;
@@ -267,86 +287,6 @@ body.timemachine{
                 }
             }
 
-        }
-    }
-    >nav{
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translate(0, -50%);
-        ul{
-            display: flex;
-            flex-direction: column;
-        }
-        li{
-            display: inline-block;
-            position: relative;
-            margin-bottom: 20px;
-            span{
-                display: inline-block;
-                width: 10px;
-                height: 100%;
-                background-color: #eee;
-                transform: skewY(45deg);
-                cursor: pointer;
-            }
-            
-            &.active,&:hover{
-                span{
-                    background-color: $brand;
-                }
-                .tooltip{
-                    display: inline-block;
-                }
-            }
-        
-            .tooltip{
-                display: none;
-                position: absolute;
-                top: -20px;
-                left: -210px;
-                box-sizing: border-box;
-                padding: 12px;
-                width: 180px;
-                height: 100%;
-                background-color: #555;
-                font-family: $font;
-                font-size: 24px;
-                font-weight: 500;
-                line-height: 1;
-                color: #eee;
-                text-transform: uppercase;
-                &:before{
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    right: -20px;
-                    width: 20px;
-                    height: 100%;
-                    background-color: #555;
-                    transform: skewY(30deg);
-                    transform-origin: top left;
-                }
-            }
-
-            &:nth-child(1){
-                height: 50px;
-            }
-            &:nth-child(2){
-                height: 75px;
-            }
-            &:nth-child(3){
-                height: 40px;
-            }
-            &:nth-child(4){
-                height: 75px;
-            }
-            &:nth-child(5){
-                height: 90px;
-            }
-            &:nth-child(6){
-                height: 40px;
-            }
         }
     }
 
