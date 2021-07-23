@@ -164,7 +164,7 @@ fabric.loadSVGFromURL('../img/map_set.svg', function(objects, options) {
   // canvas.add(dollars); 
   // canvas.calcOffset();
   // canvas.renderAll();
-
+  console.log(objects);
   for (let i = 1; i < objects.length; i++) {
     let polygon = new fabric.Polygon([
       objects[i].points[0],
