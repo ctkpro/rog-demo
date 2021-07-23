@@ -158,7 +158,7 @@ drawGrid();
 canvas.add(rect);
 
 let particles = [];
-fabric.loadSVGFromURL('../img/map_set.svg', function(objects, options) { 
+fabric.loadSVGFromURL('js/map_set.svg', function(objects, options) { 
   // var dollars = fabric.util.groupSVGElements(objects, options);
   // particles = objects;
   // canvas.add(dollars); 
