@@ -171,11 +171,11 @@ fabric.loadSVGFromURL('js/map_set.svg', function(objects, options) {
       objects[i].points[1],
       objects[i].points[2]
       ], {
-        left: objects[i].left/2,
-        top: objects[i].top/2,
+        left: objects[i].left/2.5,
+        top: objects[i].top/2.5,
         fill: objects[i].fill,
-        scaleX: 0.5,
-        scaleY: 0.5,
+        scaleX: 0.4,
+        scaleY: 0.4,
       }
     )
     canvas.add(polygon);
