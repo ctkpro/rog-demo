@@ -158,13 +158,12 @@ drawGrid();
 canvas.add(rect);
 
 let particles = [];
-fabric.loadSVGFromURL('js/map_set.svg', function(objects, options) { 
+fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
   // var dollars = fabric.util.groupSVGElements(objects, options);
   // particles = objects;
   // canvas.add(dollars); 
   // canvas.calcOffset();
   // canvas.renderAll();
-  console.log(objects);
   for (let i = 1; i < objects.length; i++) {
     let polygon = new fabric.Polygon([
       objects[i].points[0],
@@ -176,6 +175,7 @@ fabric.loadSVGFromURL('js/map_set.svg', function(objects, options) {
         fill: objects[i].fill,
         scaleX: 0.4,
         scaleY: 0.4,
+        holder:objects[i].fill,
       }
     )
     canvas.add(polygon);
@@ -193,19 +193,55 @@ fabric.loadSVGFromURL('js/map_set.svg', function(objects, options) {
   // )
   // canvas.add(polygon);
 
-}); 
+});
+
+fabric.loadSVGFromURL('js/map_seven_sign.svg', function(objects, options) {
+
+  for (let i = 1; i < objects.length; i++) {
+    let polygon = new fabric.Polygon([
+      objects[i].points[0],
+      objects[i].points[1],
+      objects[i].points[2]
+      ], {
+        left: objects[i].left/2.5,
+        top: objects[i].top/2.5,
+        fill: objects[i].fill,
+        scaleX: 0.4,
+        scaleY: 0.4,
+        holder:objects[i].fill,
+      }
+    )
+    canvas.add(polygon);
+  }
+});
 
 
 function setZoom(zoom,x,y){
   let newZoom = canvas.getZoom() + zoom;
+  if(newZoom > 2){
+    newZoom = 2;
+  }else if(newZoom < 0.8){
+    newZoom = 0.8;
+  }
   canvas.zoomToPoint({x:x, y:y}, newZoom);
 }
 
 canvas.on('mouse:wheel', (e) => {
-  const deltaY = e.e.deltaY
-  const newZoom = deltaY / 100;
-  setZoom(newZoom, e.e.offsetX, e.e.offsetY)
+  if(e.e.ctrlKey){
+    const deltaY = e.e.deltaY
+    const newZoom = -1 * (deltaY / 10);
+    setZoom(newZoom, e.e.offsetX, e.e.offsetY)
+  }
 })
+let btnScaleUp = document.querySelector('.scale-up');
+let btnScalepDown = document.querySelector('.scale-down');
+btnScaleUp.addEventListener('click',function(e){
+  setZoom(0.2, canvas.width/2, canvas.height/2);
+})
+btnScalepDown.addEventListener('click',function(e){
+  setZoom(-0.2, canvas.width/2, canvas.height/2);
+})
+
 
 const dragInfo = {
   isDragging: false,
@@ -219,12 +255,26 @@ canvas.on('mouse:down', (e) => {
   dragInfo.lastY = e.e.clientY;
   
 })
-
+const moveLimit = 280;
 canvas.on('mouse:move', (e) => {
   if (dragInfo.isDragging) {
+    let canvasScale = canvas.viewportTransform[0];
+    let moveFit = canvasScale * canvasScale * -200;
+    if(canvas.viewportTransform[4]> moveLimit ){
+      canvas.viewportTransform[4] = moveLimit ;
+    }else if(canvas.viewportTransform[4] < -moveLimit * canvasScale ** 2){
+      canvas.viewportTransform[4] = -moveLimit * canvasScale **2;
+    }else{
+      canvas.viewportTransform[4] += e.e.clientX - dragInfo.lastX;
+    }
 
-    canvas.viewportTransform[4] += e.e.clientX - dragInfo.lastX;
-    canvas.viewportTransform[5] += e.e.clientY - dragInfo.lastY;
+    if(canvas.viewportTransform[5] > moveLimit){
+      canvas.viewportTransform[5] = moveLimit;
+    }else if(canvas.viewportTransform[5] < -moveLimit * canvasScale ** 2){
+      canvas.viewportTransform[5] = -moveLimit * canvasScale ** 2;
+    }else{
+      canvas.viewportTransform[5] += e.e.clientY - dragInfo.lastY;
+    }
     canvas.requestRenderAll();
     dragInfo.lastX = e.e.clientX;
     dragInfo.lastY = e.e.clientY;
@@ -235,3 +285,13 @@ canvas.on('mouse:up', function(opt) {
   dragInfo.isDragging = false;
   dragInfo.selection = true;
 })
+
+canvas.on('mouse:over', function(e) {
+  e.target.set('fill', 'green');
+  canvas.renderAll();
+})
+
+canvas.on('mouse:out', function(e) {
+  e.target.set('fill', e.target.holder);
+  canvas.renderAll();
+});
