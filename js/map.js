@@ -251,31 +251,31 @@ fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) {
 });
 const citivas = {
   castitas:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   },
   moderatio:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   },
   liberalitas:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   },
   industria:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   },
   patience:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   },
   gratia:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   },
   humility:{
-    img: '/js/castitas.jpg',
+    img: 'js/castitas.jpg',
     link:''
   }
 }
