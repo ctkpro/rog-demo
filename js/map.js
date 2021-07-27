@@ -251,31 +251,31 @@ fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) {
 });
 const citivas = {
   castitas:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   },
   moderatio:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   },
   liberalitas:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   },
   industria:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   },
   patience:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   },
   gratia:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   },
   humility:{
-    img: '../img/castitas.jpg',
+    img: '../js/castitas.jpg',
     link:''
   }
 }
@@ -298,9 +298,9 @@ fabric.loadSVGFromURL('js/map_seven_sign.svg', function(objects, options) {
         link: citivas[ objects[i].id ].link
       }
     )
-      // setTimeout(() => {
+      setTimeout(() => {
         canvas.add(polygon);
-      // }, 200);
+      }, 200);
   }
 
 });
