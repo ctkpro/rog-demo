@@ -200,56 +200,55 @@ drawGrid();
 canvas.add(rect);
 
 
-fetch("/js/map_world.json")
-  .then(response => response.json())
-  .then(json => {
-    for (let i = 1; i < json.length; i++) {
-      let polygon = new fabric.Polygon([
-        json[i].points[0],
-        json[i].points[1],
-        json[i].points[2]
-        ], {
-          left: json[i].left/2,
-          top: json[i].top/2,
-          fill: json[i].fill,
-          scaleX: 0.5,
-          scaleY: 0.5,
-          opacity: 0.6,
-          holder:json[i].fill,
-          role: 'none'
+// fetch("/js/map_world.json")
+//   .then(response => response.json())
+//   .then(json => {
+//     for (let i = 1; i < json.length; i++) {
+//       let polygon = new fabric.Polygon([
+//         json[i].points[0],
+//         json[i].points[1],
+//         json[i].points[2]
+//         ], {
+//           left: json[i].left/2,
+//           top: json[i].top/2,
+//           fill: json[i].fill,
+//           scaleX: 0.5,
+//           scaleY: 0.5,
+//           opacity: 0.6,
+//           holder:json[i].fill,
+//           role: 'none'
   
-        }
-      )
-      canvas.add(polygon);
-    }
-  });
-// fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
+//         }
+//       )
+//       canvas.add(polygon);
+//     }
+//   });
+fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
   // var dollars = fabric.util.groupSVGElements(objects, options);
   // canvas.add(dollars); 
   // canvas.calcOffset();
   // canvas.renderAll();
 
-  // let json = JSON.stringify(objects);
-  // console.log(json);
-  // for (let i = 1; i < objects.length; i++) {
-  //   let polygon = new fabric.Polygon([
-  //     objects[i].points[0],
-  //     objects[i].points[1],
-  //     objects[i].points[2]
-  //     ], {
-  //       left: objects[i].left/2,
-  //       top: objects[i].top/2,
-  //       fill: objects[i].fill,
-  //       scaleX: 0.5,
-  //       scaleY: 0.5,
-  //       holder:objects[i].fill,
-  //       role: 'none'
+  for (let i = 1; i < objects.length; i++) {
+    let polygon = new fabric.Polygon([
+      objects[i].points[0],
+      objects[i].points[1],
+      objects[i].points[2]
+      ], {
+        left: objects[i].left/2,
+        top: objects[i].top/2,
+        fill: objects[i].fill,
+        scaleX: 0.5,
+        scaleY: 0.5,
+        opacity: 0.6,
+        holder:objects[i].fill,
+        role: 'none'
 
-  //     }
-  //   )
-  //   canvas.add(polygon);
-  // }
-// });
+      }
+    )
+    canvas.add(polygon);
+  }
+});
 const citivas = {
   castitas:{
     img: '../img/castitas.jpg',
@@ -299,11 +298,11 @@ fabric.loadSVGFromURL('js/map_seven_sign.svg', function(objects, options) {
         link: citivas[ objects[i].id ].link
       }
     )
-      setTimeout(() => {
+      // setTimeout(() => {
         canvas.add(polygon);
-      }, 200);
+      // }, 200);
   }
-  console.log(objects);
+
 });
 
 
