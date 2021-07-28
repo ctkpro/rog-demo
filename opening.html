@@ -12,7 +12,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 	</head>
 	<body class="opening">
-		<nav>
+		<div class="nav">
 			<ul>
 				<li>system1</li>
 				<li>system2 Lorem ipsum dolor sit amet</li>
@@ -22,10 +22,8 @@
 				<li>system6 Lorem</li>
 				<li>system7</li>
 			</ul>
-		</nav>
+		</div>
 		<section class="">
-			<!-- <img src="../img/top_banner/banner.jpg" alt="" class="banner"> -->
-
 			<!-- <video  autoplay muted poster="https://static.playoverwatch.com/img/pages/hero-detail/staticposter-733c75265d.gif">
 				<source src="../video/rog_short.mp4" type="video/mp4">
 				Your browser does not support the video tag.
@@ -39,94 +37,13 @@
 				</defs>
 					<rect x='0' y='0' width="100%" height="100%" stroke="" fill="url(#p)" />
 			</svg>
-			<div class="warning-box1 system-box box-size-m">
-				<header>
-					<div class="title">warning</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					system error
-				</section>
-				<footer>
-					<p>Class Rog extend React.class{</p>
-					<p class='indent-1'>this.state = virus;
-					</p>
-					<p>}</p>
-				</footer>
-			</div>
 
-			<div class="system-box terminal-box terminal-box1 box-size-l">
-				<header>
-					<div class="title">terminal</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					<p class='first'>rog_system > <span></span></p>
-					<p class='second'>rog_system > <span></span></p>
-				</section>
-				<footer>
-					<p> >...</p>
-				</footer>
+			<img src="img/rog-logo.svg" alt="" class="logo">
+			
+			<div class="progressbar">
+				<div class="progressbar-inner"></div>
 			</div>
-			<div class="system-box terminal-box terminal-box2 box-size-m">
-				<header>
-					<div class="title">terminal</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus vero ducimus mollitia
-						 magnam quidem quasi sequi repellat! Dolore sed commodi tempora vel, perferendis perspiciatis quia.
-						  Atque accusamus praesentium nostrum Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						   Id, corrupti! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut.</p>	
-				</section>
-				<footer>
-					<p> >...</p>
-				</footer>
-			</div>
-
-
-			<div class="pwd-box system-box box-size-s">
-				<header>
-					<div class="title">enter access code</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					<ul>
-						<li class="number"><a href="">1</a></li>
-						<li class="number"><a href="">2</a></li>
-						<li class="number"><a href="">3</a></li>
-						<li class="number"><a href="">4</a></li>
-						<li class="number"><a href="">5</a></li>
-						<li class="number"><a href="">6</a></li>
-						<li class="number"><a href="">7</a></li>
-						<li class="number"><a href="">8</a></li>
-						<li class="number"><a href="">9</a></li>
-						<li class="number"><a href="">0</a></li>
-					</ul>
-					<div class="enter"><a href="">enter</a></div>
-				</section>
-				<footer>
-					<p>password</p>
-				</footer>
-			</div>
-			<div class="download-box system-box box-size-m">
-				<header>
-					<div class="title">data download</div>
-					<div class="close">&#10005</div>
-				</header>
-				<section>
-					<div class="progressbar">
-						<div class="progressbar-inner"></div>
-					</div>
-				</section>
-				<footer>
-					<div class="process">
-						<span class="process-rate">1%</span>
-						<span class="process-status">proccessed...</span>
-					</div>
-					<div class="cancel">cancel</div>
-				</footer>
-			</div>
+			
 			<video muted loop poster="https://static.playoverwatch.com/img/pages/hero-detail/staticposter-733c75265d.gif">
 				<source src="video/bg_2.mp4" type="video/mp4">
 				Your browser does not support the video tag.
@@ -144,111 +61,42 @@
 		</footer>
 
 		<script>
-			let nbs = document.querySelectorAll('.number a');
-			let enter = document.querySelector('.enter a');
-			let encode_pwd = document.querySelector('.pwd-box footer p');
-			let warning_box = document.querySelector('.warning-box');
-			let pwd_box = document.querySelector('.pwd-box');	
-			let download_box = document.querySelector('.download-box');	
+
 			let system_boxs = document.querySelectorAll('.system-box');
 			let video = document.querySelector('video');
-			let attribute_box = document.querySelector('.attribute-box');
 
-			
-			let i = 0;
-			let txt = 'Lorem ipsum typing effect!Lorem ipsum dolor sit amet';
-			let speed = 40;
-			function typeWriter() {
-				if (i < txt.length) {
-					document.querySelector('.terminal-box1 section p.first span').innerHTML += txt.charAt(i);
-					i++;
-					setTimeout(typeWriter, speed);
-				}else{
-					document.querySelector('.terminal-box1 section p.second').style.display = 'block';
-					typeWriter2();
-				}
-			}
-			let j = 0;
-			let txt2 = 'Lorem ipsum dolor sit amet';
-			function typeWriter2() {
-				if (j < txt2.length) {
-					document.querySelector('.terminal-box1 section p.second span').innerHTML += txt2.charAt(j);
-					j++;
-					setTimeout(typeWriter2, speed);
-				}
-			}
-			typeWriter();
-
-
-			function clickEffect(ele,t){
-				setTimeout(() => {
-					ele.classList.add('active');
-				}, t);
-				setTimeout(() => {
-					ele.classList.remove('active');
-				}, t+150);
-			}
-			function encodeEffect(ele,code,t){
-				setTimeout(() => {
-					ele.innerText = code;
-				}, t);
-			}
-			function do_password(pwd){
-				let delay = 200;
-				let input_text = '';
-				for (let i = 0; i < pwd.length; i++) {
-					let ele = pwd[i] == 0 ? nbs[9] : nbs[ pwd[i]-1 ];
-					clickEffect( ele, i*delay );
-
-					input_text += '*';
-					encodeEffect(encode_pwd, input_text, i*delay);
-				}
-				clickEffect( enter,pwd.length*delay);
-				encodeEffect( encode_pwd, 'access granted', pwd.length*delay+400);
-			}
+			let logo = document.querySelector('.logo');	
+			let progress_bar = document.querySelector('.progressbar');
 
 			function progress() {
 				let bar = document.querySelector('.progressbar-inner');
-				let process = document.querySelector('.process-rate');
-				let status = document.querySelector('.process-status');
 				var rate = 1;
 				var frameId = setInterval(frame, 20);
 				function frame() {
 					if (rate >= 100) {
 						clearInterval(frameId);
-						status.innerText = 'finished';
 					}else{
-						rate_set = 3;
-						if( rate > 50 ){
-							rate_set = 1;
-						}else if(rate > 80){
+						rate_set = 1;
+						if( rate > 80 ){
+							rate_set = 0.5;
+						}else if(rate > 50){
 							rate_set = 2;
 						} 
 						rate+= rate_set;
 						bar.style.width = rate + '%';
-						process.innerText = rate + '%';
 					}
 				}
 			}
-
-			setTimeout(() => { do_password('270720');}, 4000);
-
-			setTimeout(() => { download_box.style.opacity = 1;}, 5400);
-
-			setTimeout(() => { progress();}, 5500);
-
+			setTimeout(() => { progress();}, 1500);
 			setTimeout(() => {
-				for (let i = 0; i < system_boxs.length; i++) {
-					const ele = system_boxs[i];
-					ele.style.display = 'none';
-				}
-				attribute_box.style.display = 'none';
-			}, 6800);
+				logo.style.display = 'none';
+				progress_bar.style.display = 'none';
+			}, 4200);
 
 			setTimeout(() => {
 				video.style.opacity = 1;
 				video.play();
-			}, 7400);
+			}, 4900);
 		</script>
 	</body>
 </html>
