@@ -37,14 +37,14 @@ body{
         &:hover{
           .tooltip{
             --clip-offset: 0%;
-            transition: clip-path 1s;
+            transition: clip-path 1s cubic-bezier(.37,.41,.03,-0.38);
           }
 
         }
         &.active{
           .tooltip{
-            animation: show-tooltip 5s linear 0.5s 1 alternate backwards,
-            hide-tooltip 1s linear 5s;
+            animation: show-tooltip 5s cubic-bezier(.37,.41,.03,-0.38) 0.5s 1 alternate backwards,
+            hide-tooltip 1s cubic-bezier(.92,1.32,.53,.67) 5s;
             // animation-name: show-tooltop, hide-tooltip;
             // animation-duration: 5s, 1s;
             // animation-timing-function: linear,linear;
@@ -70,7 +70,7 @@ body{
             color: #eee;
             text-transform: uppercase;
             transform-origin: top;
-            transition: clip-path 1s;
+            transition: clip-path 1s cubic-bezier(.92,1.32,.53,.67);
             clip-path: polygon(var(--clip-offset) 0%, 100% 0%, 100% 130%, var(--clip-offset) 100%);
 
             .tooltip-inner{
