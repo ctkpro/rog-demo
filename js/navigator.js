@@ -23,7 +23,10 @@ jQuery(document).ready(function(){
 		ele.addEventListener("click",function(){
 			tablinks.forEach(element =>{
 				element.className = element.className.replace(" active", "");
+				// element.className = element.className.replace(" deactive", "");
+				// element.className += " deactive";
 			})
+			// this.className = this.className.replace(" deactive", "");
 			this.className += " active";
 			
 			let target = this.dataset.target;
@@ -32,7 +35,15 @@ jQuery(document).ready(function(){
 				element.style.display = "none";
 			})
 			document.getElementById(target).style.display = "flex";
-		})
+		});
+		// ele.addEventListener('mouseover',function(){
+		// 	tablinks.forEach(element =>{
+		// 		if( element.classList.contains('active') ){
+		// 			element.querySelector(".tooltip").style.animationName = "hide-tooltip";
+		// 			element.querySelector(".tooltip").style.animationDuration = "1s";
+		// 		};
+		// 	})
+		// })
 	});
 	tablinks[1].click();
 });

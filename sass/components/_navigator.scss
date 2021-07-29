@@ -1,3 +1,6 @@
+:root{
+  --clip-offset: 100%;
+}
 body{
   >nav{
     position: absolute;
@@ -9,6 +12,7 @@ body{
         flex-direction: column;
     }
     li{
+
         display: inline-block;
         position: relative;
         margin-bottom: 10px;
@@ -32,42 +36,53 @@ body{
         }
         &:hover{
           .tooltip{
-            transition: 0.5s;
-            top: -20px;
-            left: -200px;
-            opacity: 1;
+            --clip-offset: 0%;
+            transition: clip-path 1s;
           }
 
         }
         &.active{
           .tooltip{
-            top: -20px;
-            left: -200px;
-            opacity: 1;
-            animation: show-tooltip 1s ease 4.5s 1 alternate forwards;
+            animation: show-tooltip 5s linear 0.5s 1 alternate backwards,
+            hide-tooltip 1s linear 5s;
+            // animation-name: show-tooltop, hide-tooltip;
+            // animation-duration: 5s, 1s;
+            // animation-timing-function: linear,linear;
+            // animation-delay: 0.5s, 5s;
+            // animation-iteration-count: 1, 1;
+            // animation-direction: normal,normal;
+
           }
         }
     
         .tooltip{
-            // display: none;
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -20px;
+            right: 30px;
             box-sizing: border-box;
-            padding: 12px;
-            width: 180px;
+            // padding: 12px;
+            width: 225px;
             height: 100%;
-            background-color: #555;
             font-family: $font;
             font-size: 24px;
             font-weight: 500;
             line-height: 1;
             color: #eee;
-            opacity: 0;
             text-transform: uppercase;
             transform-origin: top;
-            transition: 0.5s;
-            &:before{
+            transition: clip-path 1s;
+            clip-path: polygon(var(--clip-offset) 0%, 100% 0%, 100% 130%, var(--clip-offset) 100%);
+
+            .tooltip-inner{
+              position: relative;
+              box-sizing: border-box;
+              padding: 10px;
+              width: 200px;
+              height: 100%;
+              // border: 1px solid yellow;
+              background-color: #555;
+              // transform: translate(-15px, 0);
+              &:before{
                 content: '';
                 position: absolute;
                 top: 0;
@@ -77,6 +92,7 @@ body{
                 background-color: #555;
                 transform: skewY(30deg);
                 transform-origin: top left;
+              }
             }
         }
 
@@ -102,9 +118,21 @@ body{
   }
 }
 @keyframes show-tooltip {
-  0%{ opacity: 1;}
-  100%{ opacity: 0;
-    top: 0;
-    left: 0;
+  0%{ 
+    clip-path: polygon(100% 0%, 100% 0%, 100% 130%, 100% 100%);
+  }
+  20%{ 
+    clip-path: polygon(0% 0%, 100% 0%, 100% 130%, 0% 100%);
+  }
+  100%{
+    clip-path: polygon(0% 0%, 100% 0%, 100% 130%, 0% 100%);
+  }
+}
+@keyframes hide-tooltip {
+  0%{ 
+    clip-path: polygon(0% 0%, 100% 0%, 100% 130%, 0% 100%);
+  }
+  100%{
+    clip-path: polygon(100% 0%, 100% 0%, 100% 130%, 100% 100%);
   }
 }
