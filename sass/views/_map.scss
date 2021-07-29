@@ -1,3 +1,4 @@
+
 body.map{
     background-color: #111;
     section{
@@ -8,9 +9,9 @@ body.map{
         height: 100vh;
         .scale-buttons{
             position: absolute;
-            left: 5%;
             bottom: 5%;
-            padding: 10px;
+            left: 5%;
+            transform: translate(10px, -8px);
             button{
                 margin-right: 5px;
                 width: 50px;
@@ -26,8 +27,123 @@ body.map{
                 }
             }
         }
+        .dashboard{
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            transform: translate(10px, 8px);
+            padding: 2px;
+            border: 1px solid rgba(white,0.5);
+            color: #aaa;
+            .number{
+                display: none;
+                // display: flex;
+                // flex-wrap: wrap;
+                // justify-content: center;
+                // align-items: center;
+                // margin: 10px 10px 0 10px;
+                // width: 120px;
+                // height: 120px;
+                // border: 1px solid rgba(white,0.5);
+                // border-radius: 50%;
+                // font-size: 40px;
+            }
+            .chart{
+                margin: 10px 10px 0 10px;
+                width: 120px;
+                height: 120px;
+
+                .rate{
+                    stroke-dasharray: 350;
+                    stroke-dashoffset: 340;
+                    animation: chart-rate 3s ease-out infinite alternate none;
+                }
+                text{
+                    font-size: 40px;
+                    fill:#aaa;
+                    text-anchor: middle;
+                    transform: translateY(10px);
+                }
+            }
+            .describe{
+                margin: 5px 0;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 300;
+                text-align: center;
+            }
+            footer{
+                border: 1px solid rgba(white,0.5);
+                font-weight: 300;
+                text-align: center;
+            }
+        }
+        .status{
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            transform: translate(-8px, 8px);
+            padding: 5px;
+            width: 150px;
+            // border: 1px solid rgba(white,0.5);
+            color: #aaa;
+            .bar{
+                box-sizing: border-box;
+                padding: 1px;
+                width: 100%;
+                height: 10px;
+                border: 1px solid $brand;
+                .bar-inner{
+                    width: 27%;
+                    height: 100%;
+                    background-color: $brand;
+                }
+            }
+            .status-text{
+                margin-top: 3px;
+            }
+        }
+        .info{
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            transform: translate(-8px, -8px);
+            padding: 5px;
+            width: 150px;
+            // border: 1px solid rgba(white,0.5);
+            color: #aaa;
+            header{
+                color: #ccc;
+            }
+            p{
+                margin: 0;
+                line-height: 1;
+                opacity: 0.6;
+            }
+        }
     }
     canvas{
         border: 1px solid #aaa;
+    }
+}
+
+@keyframes chart-rate {
+    0%{
+        stroke-dashoffset: 340;
+    }
+    20%{
+        stroke-dashoffset: 240;
+    }
+    40%{
+        stroke-dashoffset: 300;
+    }
+    60%{
+        stroke-dashoffset: 280;
+    }
+    80%{
+        stroke-dashoffset: 100;
+    }
+    100%{
+        stroke-dashoffset: 150;
     }
 }

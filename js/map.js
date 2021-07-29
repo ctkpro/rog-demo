@@ -1,5 +1,5 @@
-// const canvas = document.getElementById("canvas");
-// const ctx = canvas.getContext("2d");
+// const c = document.getElementById("canvas");
+// const ctx = c.getContext("2d");
 // let cw = canvas.width = window.innerWidth,
 //   cx = cw / 2;
 // let ch = canvas.height = window.innerHeight,
@@ -118,13 +118,13 @@ fabric.Object.prototype.selectable = false;
 
 
 
-let rect = new fabric.Rect({
-  left: 10,
-  top: 10,
-  fill: 'red',
-  width: 20,
-  height: 20
-});
+// let rect = new fabric.Rect({
+//   left: 10,
+//   top: 10,
+//   fill: 'red',
+//   width: 20,
+//   height: 20
+// });
 
 let title_box = new fabric.Rect({
   left: 0,
@@ -169,35 +169,75 @@ let read_more = new fabric.Text('MORE',{
 
 
 
-function drawGrid() {
-  canvas.clear()
-  const longer = window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight
-  let vLine
-  let hLine
+// function drawGrid() {
+//   canvas.clear()
+//   const longer = window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight
+//   let vLine
+//   let hLine
 
-  d = 40;
+//   d = 40;
+//   const lineDef = {
+//     fill: '#aaa',
+//     stroke: 'rgba(250, 250, 250, 0.2)',
+//     strokeWidth: 1,
+//     selectable: false
+//   }
+//   for (let i = -1000/d; i * d <= 2*1000; i++) {
+
+//     // vLine = new fabric.Line([ i * d, -canvas.height, i * d, 2*canvas.height], lineDef);
+//     // hLine = new fabric.Line([-canvas.width, i * d, 2*canvas.width, i * d], lineDef);
+//     vLine = new fabric.Line([ i * d, -1000, i * d, 2*1000], lineDef);
+//     hLine = new fabric.Line([-1000, i * d, 2*1000, i * d], lineDef);
+    
+//     if (i % 5 === 0) {
+//       vLine.stroke = 'rgba(250,250,250, 0.7)' 
+//       hLine.stroke = 'rgba(250,250,250, 0.7)'
+//     }
+//     canvas.add(vLine, hLine)
+//   }
+// }
+
+function drawGrid(){
+  canvas.clear();
+  const longer = window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight;
+  let a = 2 * Math.PI /6;
+  let r = longer;
+  let d = 50;
+  let offset = 800;
+  let limit = (longer + offset)/d;
+  
+  let line1; // 順時針60度斜線
+  let line2; // 順時針120度斜線
+  let line3; // 水平線
+  let line1_;//x0左側的line1補正
+  let line2_;//x0左側的line2補正
+  let line3_;//y0往上的line3補正
+  let offsetHeight = (8*d) * Math.sin(a); //y0往上的斜線，若無則窗口上方會空的
+  
   const lineDef = {
     fill: '#aaa',
-    stroke: 'rgba(250, 250, 250, 0.2)',
+    stroke: 'rgba(250, 250, 250, 0.1)',
     strokeWidth: 1,
     selectable: false
   }
-  for (let i = -1000/d; i * d <= 2*1000; i++) {
+  for (let i = 0; i < limit; i++) {
 
-    // vLine = new fabric.Line([ i * d, -canvas.height, i * d, 2*canvas.height], lineDef);
-    // hLine = new fabric.Line([-canvas.width, i * d, 2*canvas.width, i * d], lineDef);
-    vLine = new fabric.Line([ i * d, -1000, i * d, 2*1000], lineDef);
-    hLine = new fabric.Line([-1000, i * d, 2*1000, i * d], lineDef);
-    
-    if (i % 5 === 0) {
-      vLine.stroke = 'rgba(250,250,250, 0.7)' 
-      hLine.stroke = 'rgba(250,250,250, 0.7)'
-    }
-    canvas.add(vLine, hLine)
+    line1 = new fabric.Line([i * d, 0 -offsetHeight, (i * d) + r * Math.cos(a), r * Math.sin(a)-offsetHeight],lineDef);
+    line2 = new fabric.Line([i * d, 0 -offsetHeight, (i * d) + r * Math.cos(2*a), r * Math.sin(2*a)-offsetHeight],lineDef);
+    line3 = new fabric.Line([-offset, (i*d) * Math.sin(a), longer + offset, (i*d) * Math.sin(a)],lineDef);
+    canvas.add(line1,line2,line3);
   }
+
+  for (let i = -1; i > -offset; i--) {
+    line1_ = new fabric.Line([i * d, 0 -offsetHeight,(i * d) + r * Math.cos(a), r * Math.sin(a)-offsetHeight],lineDef);
+    line2_ = new fabric.Line([i * d, 0 -offsetHeight, (i * d) + r * Math.cos(2*a), r * Math.sin(2*a)-offsetHeight],lineDef);
+    line3_ = new fabric.Line([-offset, (i*d) * Math.sin(a), longer + offset, (i*d) * Math.sin(a)],lineDef);
+    canvas.add(line1_,line2_,line3_);
+  }
+
 }
 drawGrid();
-canvas.add(rect);
+// canvas.add(rect);
 
 
 // fetch("/js/map_world.json")
@@ -223,32 +263,34 @@ canvas.add(rect);
 //       canvas.add(polygon);
 //     }
 //   });
-fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
-  // var dollars = fabric.util.groupSVGElements(objects, options);
-  // canvas.add(dollars); 
-  // canvas.calcOffset();
-  // canvas.renderAll();
 
-  for (let i = 1; i < objects.length; i++) {
-    let polygon = new fabric.Polygon([
-      objects[i].points[0],
-      objects[i].points[1],
-      objects[i].points[2]
-      ], {
-        left: objects[i].left/2,
-        top: objects[i].top/2,
-        fill: objects[i].fill,
-        scaleX: 0.5,
-        scaleY: 0.5,
-        opacity: 0.6,
-        holder:objects[i].fill,
-        role: 'none'
 
-      }
-    )
-    canvas.add(polygon);
-  }
-});
+// fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
+//   // var dollars = fabric.util.groupSVGElements(objects, options);
+//   // canvas.add(dollars); 
+//   // canvas.calcOffset();
+//   // canvas.renderAll();
+
+//   for (let i = 1; i < objects.length; i++) {
+//     let polygon = new fabric.Polygon([
+//       objects[i].points[0],
+//       objects[i].points[1],
+//       objects[i].points[2]
+//       ], {
+//         left: objects[i].left/2,
+//         top: objects[i].top/2,
+//         fill: objects[i].fill,
+//         scaleX: 0.5,
+//         scaleY: 0.5,
+//         opacity: 0.6,
+//         holder:objects[i].fill,
+//         role: 'none'
+
+//       }
+//     )
+//     canvas.add(polygon);
+//   }
+// });
 const citivas = {
   castitas:{
     img: 'castitas.jpg',
