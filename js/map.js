@@ -265,32 +265,32 @@ drawGrid();
 //   });
 
 
-// fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
-//   // var dollars = fabric.util.groupSVGElements(objects, options);
-//   // canvas.add(dollars); 
-//   // canvas.calcOffset();
-//   // canvas.renderAll();
+fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
+  // var dollars = fabric.util.groupSVGElements(objects, options);
+  // canvas.add(dollars); 
+  // canvas.calcOffset();
+  // canvas.renderAll();
 
-//   for (let i = 1; i < objects.length; i++) {
-//     let polygon = new fabric.Polygon([
-//       objects[i].points[0],
-//       objects[i].points[1],
-//       objects[i].points[2]
-//       ], {
-//         left: objects[i].left/2,
-//         top: objects[i].top/2,
-//         fill: objects[i].fill,
-//         scaleX: 0.5,
-//         scaleY: 0.5,
-//         opacity: 0.6,
-//         holder:objects[i].fill,
-//         role: 'none'
+  for (let i = 1; i < objects.length; i++) {
+    let polygon = new fabric.Polygon([
+      objects[i].points[0],
+      objects[i].points[1],
+      objects[i].points[2]
+      ], {
+        left: objects[i].left/2,
+        top: objects[i].top/2,
+        fill: objects[i].fill,
+        scaleX: 0.5,
+        scaleY: 0.5,
+        opacity: 0.5,
+        holder:objects[i].fill,
+        role: 'none'
 
-//       }
-//     )
-//     canvas.add(polygon);
-//   }
-// });
+      }
+    )
+    canvas.add(polygon);
+  }
+});
 const citivas = {
   castitas:{
     img: 'castitas.jpg',
