@@ -17,7 +17,12 @@
 	</head>
 	<body class="map">
 		<section class="universe">
-			<canvas id="canvas"></canvas>
+			<header>universe</header>
+			<div class="canvas-wraper">
+				<canvas id="canvas"></canvas>
+				<button class="move-button move-left"> < </button>
+				<button class="move-button move-right"> > </button>
+			</div>
 			<div class="scale-buttons">
 				<button class="scale-down">-</button>
 				<button class="scale-up">+</button>
@@ -43,7 +48,52 @@
 				<p>Sit amet consectetur.</p>
 				<p>Adipisicing elit. Quam.</p>
 			</div>
+			<div class="detail">
+				<header>Lorem</header>
+				<img src="" alt="" class="featured-img">
+				<a href="" class="read-more">MORE</a>
+			</div>
 		</section>
+		<nav>
+			<ul>
+				<li class="tablinks" data-target="opening">
+					<div class="tooltip">
+						<div class="tooltip-inner">OPENING</div>
+					</div>
+					<span></span>
+				</li>
+				<li class="tablinks" data-target="worldview">
+					<div class="tooltip">
+						<div class="tooltip-inner">ROG worldview chronicle</div>
+					</div>
+					<span></span>
+				</li>
+				<li class="tablinks" data-target="gamers">
+					<div class="tooltip">
+						<div class="tooltip-inner">G.A.M.E.Rs</div>
+					</div>
+					<span></span>
+				</li>
+				<li class="tablinks" data-target="universe">
+					<div class="tooltip">
+						<div class="tooltip-inner">Universe</div>
+					</div>
+					<span></span>
+				</li>
+				<li class="tablinks" data-target="medias">
+					<div class="tooltip">
+						<div class="tooltip-inner">MEDIAS</div>
+					</div>
+					<span></span>
+				</li>
+				<li class="tablinks" data-target="bts">
+					<div class="tooltip">
+						<div class="tooltip-inner">Behind the Scene</div>
+					</div>
+					<span></span>
+				</li>
+			</ul>
+		</nav>
 		<script src='./js/map.js'></script>
 		<script src='./js/decoration.js'></script>
 	</body>

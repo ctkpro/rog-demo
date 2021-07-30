@@ -106,14 +106,18 @@ function oMousePos(canvas, evt) {
   }
 }
 
+
+// 設定canvas長寬，css section會把它置中
+let w = window.innerWidth > 980 ? window.innerWidth * 0.9 : window.innerWidth * 0.8;
+let h = window.innerWidth > 980 ? window.innerHeight * 0.9 : window.innerHeight * 0.6;
 var canvas = new fabric.Canvas('canvas', {
-  height: window.innerHeight * 0.9,
-  width: window.innerWidth * 0.9,
+  width: w,
+  height: h,
   backgroundColor: 'rgb(0,0,0)',
   selectionColor: 'blue',
-  selectionLineWidth: 2
+  selectionLineWidth: 2,
+  selection: false
 });
-
 fabric.Object.prototype.selectable = false;
 
 
@@ -122,8 +126,8 @@ fabric.Object.prototype.selectable = false;
 //   left: 10,
 //   top: 10,
 //   fill: 'red',
-//   width: 20,
-//   height: 20
+//   width: 50,
+//   height: 50
 // });
 
 let title_box = new fabric.Rect({
@@ -212,8 +216,9 @@ function drawGrid(){
   let line1_;//x0左側的line1補正
   let line2_;//x0左側的line2補正
   let line3_;//y0往上的line3補正
-  let offsetHeight = (8*d) * Math.sin(a); //y0往上的斜線，若無則窗口上方會空的
-  
+
+  //窗口上方的斜線，若不往上偏移則移動時會看到空的，但手機版不用往上移動
+  let offsetHeight = window.innerWidth > 980 ? (8*d) * Math.sin(a) : 0;
   const lineDef = {
     fill: '#aaa',
     stroke: 'rgba(250, 250, 250, 0.1)',
@@ -266,11 +271,6 @@ drawGrid();
 
 
 fabric.loadSVGFromURL('js/map_world.svg', function(objects, options) { 
-  // var dollars = fabric.util.groupSVGElements(objects, options);
-  // canvas.add(dollars); 
-  // canvas.calcOffset();
-  // canvas.renderAll();
-
   for (let i = 1; i < objects.length; i++) {
     let polygon = new fabric.Polygon([
       objects[i].points[0],
@@ -339,58 +339,102 @@ fabric.loadSVGFromURL('js/map_seven_sign.svg', function(objects, options) {
         img: citivas[ objects[i].id ].img,
         link: citivas[ objects[i].id ].link
       }
-    )
-      setTimeout(() => {
-        canvas.add(polygon);
-      }, 200);
+    );
+    polygon.on('selected',function(){
+      alert('aaa');
+    })
+    setTimeout(() => {
+      canvas.add(polygon);
+    }, 200);
   }
-
 });
 
 
-function setZoom(zoom,x,y){
-  let newZoom = canvas.getZoom() + zoom;
-  if(newZoom > 2){
-    newZoom = 2;
-  }else if(newZoom < 0.8){
-    newZoom = 0.8;
+// function setZoom(zoom,x,y){
+//   let newZoom = canvas.getZoom() + zoom;
+//   if(newZoom > 2){
+//     newZoom = 2;
+//   }else if(newZoom < 0.8){
+//     newZoom = 0.8;
+//   }
+//   canvas.zoomToPoint({x:x, y:y}, newZoom);
+// }
+
+// canvas.on('mouse:wheel', (e) => {
+//   if(e.e.ctrlKey){
+//     const deltaY = e.e.deltaY
+//     const newZoom = -1 * (deltaY / 10);
+//     setZoom(newZoom, e.e.offsetX, e.e.offsetY)
+//   }
+// })
+// let btnScaleUp = document.querySelector('.scale-up');
+// let btnScalepDown = document.querySelector('.scale-down');
+// btnScaleUp.addEventListener('click',function(e){
+//   setZoom(0.2, canvas.width/2, canvas.height/2);
+// })
+// btnScalepDown.addEventListener('click',function(e){
+//   setZoom(-0.2, canvas.width/2, canvas.height/2);
+// })
+
+let btnMoveLeft = document.querySelector('.move-left');
+let btnMoveRight = document.querySelector('.move-right');
+
+const leftLimit = -600;
+const rightLimit = 100;
+btnMoveLeft.addEventListener('click',function(e){
+  let vpt = canvas.viewportTransform;
+
+  vpt[4] > leftLimit ? vpt[4] -= 100 : vpt[4] = leftLimit;
+  if(vpt[4] <= leftLimit){ 
+    this.classList.contains('disable') ? '' : this.className += " disable";
   }
-  canvas.zoomToPoint({x:x, y:y}, newZoom);
-}
-
-canvas.on('mouse:wheel', (e) => {
-  if(e.e.ctrlKey){
-    const deltaY = e.e.deltaY
-    const newZoom = -1 * (deltaY / 10);
-    setZoom(newZoom, e.e.offsetX, e.e.offsetY)
+  if( vpt[4] < rightLimit){
+    btnMoveRight.className = btnMoveRight.className.replace(" disable", "");
   }
+  canvas.requestRenderAll();
+  
 })
-let btnScaleUp = document.querySelector('.scale-up');
-let btnScalepDown = document.querySelector('.scale-down');
-btnScaleUp.addEventListener('click',function(e){
-  setZoom(0.2, canvas.width/2, canvas.height/2);
-})
-btnScalepDown.addEventListener('click',function(e){
-  setZoom(-0.2, canvas.width/2, canvas.height/2);
-})
+btnMoveRight.addEventListener('click',function(e){
+  let vpt = canvas.viewportTransform;
+  vpt[4] < rightLimit ? vpt[4] += 100 : vpt[4] = rightLimit;
+  if(vpt[4] >= rightLimit){ 
+    this.classList.contains('disable') ? '' : this.className += " disable";
+  }
 
-
+  if( vpt[4] > leftLimit){
+    btnMoveLeft.className = btnMoveLeft.className.replace(" disable", "");
+  }
+  canvas.requestRenderAll();
+})
 const dragInfo = {
   isDragging: false,
   lastX: 0,
   lastY: 0
 }
-let img;
+
+let lastTarget = '';
+let detail_header = document.querySelector('.detail header');
+let detail_img = document.querySelector('.detail img');
+let detail_link = document.querySelector('.detail .read-more');
 canvas.on('mouse:down', function(opt){
   this.isDragging = true;
   this.selection = false;
   this.lastX = opt.e.clientX;
   this.lastY = opt.e.clientY;
   
-  console.log(opt.target);
-  
+  if( window.innerWidth <= 980 && opt.target.role == "main" ){
+    if(lastTarget){
+      lastTarget.set('fill', lastTarget.holder);
+    }
+    opt.target.set('fill', 'red'); 
+    lastTarget = opt.target;
 
+    detail_header.innerText = opt.target.id;
+    detail_img.setAttribute('src', opt.target.img );
+    detail_link.setAttribute('href', opt.target.link );
+  }
 })
+
 const moveLimit = 280;
 canvas.on('mouse:move', function(opt){
   if (this.isDragging) {
@@ -428,6 +472,21 @@ canvas.on('mouse:up', function(opt) {
 })
 
 canvas.on('mouse:over', function(e) {
+  citivasFocus(e);
+})
+
+canvas.on('mouse:out', function(e) {
+  if(e.target.role !=  'none'){
+
+    e.target.set('fill', e.target.holder);
+
+    canvas.remove(title_box,title_box_border,title,img, read_more_box, read_more);
+
+    canvas.renderAll();
+  }
+});
+
+function citivasFocus(e){
   if(e.target.role !=  'none'){
     e.target.set('fill', 'red');
 
@@ -445,18 +504,6 @@ canvas.on('mouse:over', function(e) {
       oImg.set({left:x, top:y+40,width:200,height:190});
       canvas.add(oImg);
     });
-    // console.log(t);
   }
   canvas.renderAll();
-})
-
-canvas.on('mouse:out', function(e) {
-  if(e.target.role !=  'none'){
-
-    e.target.set('fill', e.target.holder);
-
-    canvas.remove(title_box,title_box_border,title,img, read_more_box, read_more);
-
-    canvas.renderAll();
-  }
-});
+}
