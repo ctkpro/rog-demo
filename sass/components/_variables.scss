@@ -1,4 +1,21 @@
 $font: 'Teko', sans-serif;
 
+@font-face {
+    font-family: ROG_light;
+    src: url(../font/ROG_light.ttf);
+}
+@font-face {
+    font-family: ROG_regular;
+    src: url(../font/ROG_regular.otf);
+}
+@font-face {
+    font-family: ROG_bold;
+    src: url(../font/ROG_bold.otf);
+}
+@font-face {
+    font-family: TradeGothic;
+    src: url(../font/TradeGothicLTPro-BdCn20.ttf);
+}
+
 
 $brand: #ff0029;
